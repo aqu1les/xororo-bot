@@ -1,0 +1,201 @@
+[#LOG]: 00:24:49 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:25:01 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:25:26 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:25:51 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:26:54 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:27:23 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:28:19 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:30:33 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:31:06 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:32:20 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:34:16 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:35:01 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:35:28 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:36:37 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:38:52 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:39:19 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:40:30 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:42:44 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:43:37 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:45:26 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:45:48 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:46:05 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:47:47 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:48:02 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:48:07 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:48:19 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:48:42 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:48:54 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:49:15 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:50:06 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:50:13 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:50:27 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:51:34 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:51:50 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:52:39 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:53:19 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:55:35 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:55:48 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:56:19 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:57:31 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:58:29 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:59:25 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 00:59:59 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:01:18 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:02:33 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:04:36 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:05:31 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:06:05 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:07:02 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:08:38 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:08:57 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:14:30 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:21:54 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:22:56 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:27:06 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:27:46 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:32:46 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:45:35 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:45:50 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:45:54 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:46:51 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:47:29 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 01:49:26 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:54:50 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:55:30 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:56:16 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:56:56 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:57:18 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:57:52 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:58:10 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:58:19 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 01:58:40 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:09:45 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:10:27 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:11:03 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:17:35 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:18:24 - aqu1les (246470177376567297) executou o comando: play 
+[#LOG]: 02:21:58 - aqu1les (246470177376567297) executou o comando: join 
+[#LOG]: 02:22:04 - aqu1les (246470177376567297) executou o comando: stop 
+[#LOG]: 02:24:16 - aqu1les (246470177376567297) executou o comando: play - https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:26:43 - aqu1les (246470177376567297) executou o comando: pause -  
+[#LOG]: 02:27:02 - aqu1les (246470177376567297) executou o comando: pause -  
+[#LOG]: 02:27:14 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:27:19 - aqu1les (246470177376567297) executou o comando: pause -  
+[#LOG]: 02:27:54 - aqu1les (246470177376567297) executou o comando: play - https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:28:01 - aqu1les (246470177376567297) executou o comando: pause -  
+[#LOG]: 02:29:07 - aqu1les (246470177376567297) executou o comando: play - https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:29:13 - aqu1les (246470177376567297) executou o comando: pause -  
+[#LOG]: 02:29:21 - aqu1les (246470177376567297) executou o comando: play -  
+[#LOG]: 02:31:24 - aqu1les (246470177376567297) executou o comando: play - https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:31:40 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:32:03 - Chumarrento (355386700345638913) executou o comando: xama -  
+[#LOG]: 02:36:12 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:36:17 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:36:35 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:36:41 - aqu1les (246470177376567297) executou o comando: join -  
+[#LOG]: 02:40:33 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:40:40 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:40:42 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:41:02 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:41:08 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:41:27 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:41:31 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:41:36 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:41:40 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:41:45 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:42:47 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:43:05 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:43:10 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:44:02 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:44:46 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:45:13 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:45:26 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:46:05 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:47:20 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:47:21 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:47:26 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:47:59 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:48:03 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:48:09 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:48:11 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:48:48 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:49:01 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:49:07 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:49:11 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:49:36 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:49:50 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:49:53 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:50:11 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:50:17 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:50:19 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:51:45 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:51:55 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:52:01 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:52:08 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:52:25 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:52:32 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:52:34 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 02:54:20 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:54:33 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:55:02 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:55:11 - aqu1les (246470177376567297) executou o comando: pause  
+[#LOG]: 02:55:13 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 02:55:45 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:57:25 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:58:07 - aqu1les (246470177376567297) executou o comando: stop  
+[#LOG]: 02:58:15 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 02:58:28 - aqu1les (246470177376567297) executou o comando: play https://youtu.be/sgA7KIwKlOE?list=RDsgA7KIwKlOE 
+[#LOG]: 03:00:53 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:02:03 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:02:13 - aqu1les (246470177376567297) executou o comando: play  
+[#LOG]: 03:03:01 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:03:37 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:04:18 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:05:00 - aqu1les (246470177376567297) executou o comando: resume  
+[#LOG]: 03:52:17 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:01:34 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:02:29 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:02:53 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:07:23 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:07:46 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:08:01 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:08:14 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:09:55 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:10:01 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:11:50 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:11:58 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:14:39 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:15:36 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:17:49 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:18:39 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:21:06 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:21:22 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:21:53 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:22:32 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:22:57 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:23:51 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:24:18 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:26:03 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:26:10 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:30:08 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:32:06 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:34:04 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:34:22 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:35:17 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:36:55 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:38:28 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:38:55 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:39:16 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:11 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:26 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:29 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:47 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:51 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:54 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:44:56 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:47:19 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:47:25 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:47:55 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:49:40 - aqu1les (246470177376567297) executou o comando: xama  
+[#LOG]: 04:50:09 - aqu1les (246470177376567297) executou o comando: xama  

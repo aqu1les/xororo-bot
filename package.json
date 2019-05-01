@@ -1,5 +1,5 @@
 {
-  "name": "testing-bot",
+  "name": "xororo-bot",
   "version": "1.0.0",
   "description": "Bot discord apenas para testes",
   "main": "src/index.js",
@@ -19,8 +19,10 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "enmap": "^4.8.4",
-    "ffmpeg-binaries": "^3.2.2-3",
+    "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.1",
-    "opusscript": "0.0.6"
+    "opusscript": "0.0.6",
+    "sqlite3": "^4.0.6",
+    "ytdl-core": "^0.29.1"
   }
 }

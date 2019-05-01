@@ -16,7 +16,6 @@ const init = async () => {
   const cmds = await fs.readdir('src/commands');
   console.log('LIGA BOT VIADO');
 
-  //cmds.shift();
   cmds.map(f => {
     try{
       const props = require(`./commands/${f}`);

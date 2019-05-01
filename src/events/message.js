@@ -11,20 +11,18 @@ const runCommand = async (client, message) => {
 	
     const msg = message.content;
 
-    const args = msg.slice(commandPrefix).trim().split(/ +g/);
+	const args = msg.slice(commandPrefix).trim().split(' ');
+	args.shift();
+	const command = msg.substring(1, msg.length).split(' ')[0];
 
-	const command = msg.substring(1, msg.length);
-
-    const cmd = client.commands.get(command);
+	const cmd = client.commands.get(command);
 
 	if (!cmd) return;
-
-	message.delete().catch(() => {});
 
 	const logmsg = `[#LOG]: ${new Date().toLocaleTimeString()} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
 	const date = new Date().toLocaleDateString();
 	const name = date + '-log';
-	fs.appendFile(`src/logs/${name}.txt`, `${logmsg} \n`, (err) => {
+	fs.appendFile(`src/logs/${name}.txt`, `${logmsg} ${args || ''} \n`, (err) => {
 		if (err) throw err;
 		console.log(logmsg);
 	});
