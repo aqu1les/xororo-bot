@@ -42,7 +42,8 @@ const init = async () => {
   });
 
   client.on('error', err => console.log(err));
-  client.login(secret);
+  //client.login(secret);
+  client.login(process.env.secret);
 }
 
 init();
