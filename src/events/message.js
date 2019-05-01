@@ -19,8 +19,9 @@ const runCommand = async (client, message) => {
 
 	if (!cmd) return;
 
-	const logmsg = `[#LOG]: ${new Date().toLocaleTimeString()} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
-	const date = new Date().toLocaleDateString();
+	let date = new Date(Date.now());
+	date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+	const logmsg = `[#LOG]: ${date} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
 	const name = date + '-log';
 	fs.appendFile(`src/logs/${name}.txt`, `${logmsg} ${args || ''} \n`, (err) => {
 		if (err) throw err;
