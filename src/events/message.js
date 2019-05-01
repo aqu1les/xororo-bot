@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-
+const fs = require('fs-extra');
 
 const runCommand = async (client, message) => {
 
@@ -13,22 +13,21 @@ const runCommand = async (client, message) => {
 
     const args = msg.slice(commandPrefix).trim().split(/ +g/);
 
-	const command = msg
-        .substring(1, msg.lenght)
+	const command = msg.substring(1, msg.length);
 
     const cmd = client.commands.get(command);
 
-    
 	if (!cmd) return;
 
 	message.delete().catch(() => {});
 
-	console.log(
-		'[#LOG]',
-		`${message.author.username} (${
-			message.author.id
-		}) executou o comando: ${cmd.command.name}`
-	);
+	const logmsg = `[#LOG]: ${new Date().toLocaleTimeString()} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
+	const date = new Date().toLocaleDateString();
+	const name = date + '-log';
+	fs.appendFile(`src/logs/${name}.txt`, `${logmsg} \n`, (err) => {
+		if (err) throw err;
+		console.log(logmsg);
+	});
 	try {
 		if (cmd.validate) {
 			await cmd.validate(client, message, args);
@@ -50,7 +49,7 @@ const runCommand = async (client, message) => {
 module.exports = async (client, message) => {
 	if (message.author.bot) return;
 
-    const msg = ['Q', 'q', 'que', 'que?', 'q?', 'QUE']
+    const msg = ['Q', 'q', 'que', 'que?', 'q?', 'QUE'];
 
     msg.map(q => {
         if(message.content.toLowerCase() === q) {

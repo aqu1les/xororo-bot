@@ -3,16 +3,12 @@ const { currentCommands } = require('../commands.js');
 
 module.exports = {
     run: (client, message, args) => {
-        
-        if(!args[0]) {
-            message.author.send(currentCommands.map(command => command));
-            return;
-        }
-
+        message.author.send(currentCommands);
     },
     get command() {
         return {
             name: 'comandos',
+            usage: 'comandos'
         }
     }
 }

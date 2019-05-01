@@ -1,0 +1,14 @@
+[#LOG],	aqu1les (246470177376567297)
+	 executou o comando: oi 
+[#LOG],	aqu1les (246470177376567297) executou o comando: oi 
+[#LOG],	aqu1les (246470177376567297) executou o comando: oi 
+[#LOG],	aqu1les (246470177376567297) executou o comando: ping 
+[#LOG],	aqu1les (246470177376567297) executou o comando: ping 
+[#LOG],	aqu1les (246470177376567297) executou o comando: oi 
+[#LOG]: 23:33:59 - aqu1les (246470177376567297) executou o comando: oi 
+[#LOG]: 23:35:35 - Chumarrento (355386700345638913) executou o comando: xama 
+[#LOG]: 23:52:35 - aqu1les (246470177376567297) executou o comando: comandos 
+[#LOG]: 23:53:09 - aqu1les (246470177376567297) executou o comando: comandos 
+[#LOG]: 23:53:33 - aqu1les (246470177376567297) executou o comando: comandos 
+[#LOG]: 23:54:20 - aqu1les (246470177376567297) executou o comando: comandos 
+[#LOG]: 23:54:49 - aqu1les (246470177376567297) executou o comando: comandos 

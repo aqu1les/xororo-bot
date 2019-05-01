@@ -1,3 +1,2 @@
-module.exports = {
-    currentCommands = ['ping', 'xama', '!pvt', '!oi']
-}
+currentCommands = ['ping', 'xama', '!pvt', '!oi'];
+module.exports = {currentCommands};
