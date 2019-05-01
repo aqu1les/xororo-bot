@@ -17,10 +17,4 @@ db.run(`CREATE TABLE IF NOT EXISTS users(
     if (err) console.log(err);
 });
 
-db.all('SELECT * FROM users;', (err, user) => {
-    if(err) console.log(err);
-    if(user.length > 0) {
-        console.log(user);
-    }
-});
 module.exports = db;
