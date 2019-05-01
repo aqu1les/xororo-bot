@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs-extra');
 const Enmap = require('enmap');
 
-const { secret } = require('../.env');
+//const { secret } = require('../.env');
 
 const client = new Discord.Client({ forceFetchUser: true });
 
