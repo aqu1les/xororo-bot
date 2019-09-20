@@ -60,7 +60,7 @@ module.exports = async (client, message) => {
     if (test === 'ão' && message.author.username !== client.user.username) {
         return message.channel.send('Meu pau na sua mão');
     }
-    if (message.content.substr(message.content.length - 5, message.content.length - 1) === 'noite') {
+    if (message.content.substr(message.content.length - 5, message.content.length - 1) === 'noite' || message.content.substr(message.content.length - 5, message.content.length - 1) === 'NOITE') {
         return message.channel.send("Boa noite corno");
     }
     await Promise.all([runCommand(client, message)]);
