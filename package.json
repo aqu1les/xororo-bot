@@ -8,6 +8,7 @@
         "start": "node src/index.js",
         "dev": "nodemon src/index.js"
     },
+    "repository": "https://github.com/aqu1les/xororo-bot",
     "keywords": [
         "discord",
         "bot"
@@ -18,10 +19,13 @@
         "nodemon": "^1.18.11"
     },
     "dependencies": {
+        "bufferutil": "^4.0.1",
         "discord.js": "^11.4.2",
         "enmap": "^4.8.4",
+        "erlpack": "github:discordapp/erlpack",
         "ffmpeg": "0.0.4",
         "fs-extra": "^7.0.1",
+        "mongoose": "^5.7.11",
         "opusscript": "^0.0.6",
         "ytdl-core": "^0.29.1"
     }
