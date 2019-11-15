@@ -8,12 +8,12 @@ async function getElo(username) {
         const userId = response.data.id;
         const eloResponse = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${userId}?api_key=${API_KEY}`);
         let resp = [];
-        eloResponse.data.forEach(queue => {
-            if (queue.queueType === "RANKED_SOLO_5X5") {
-                return resp.push(`Solo: ${queue.tier} ${queue.rank}`);
+        await eloResponse.data.map(queue => {
+            if (queue.queueType == "RANKED_SOLO_5x5") {
+                resp.push(`Solo: ${queue.tier} ${queue.rank}`);
             }
-            if (queue.queueType === "RANKED_FLEX_SR") {
-                return resp.push(`Flex: ${queue.tier} ${queue.rank}`);
+            if (queue.queueType == "RANKED_FLEX_SR") {
+                resp.push(`Flex: ${queue.tier} ${queue.rank}`);
             }
         });
         return resp.join(" ");
