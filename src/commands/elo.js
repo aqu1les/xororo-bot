@@ -16,7 +16,7 @@ async function getElo(username) {
                 resp.push(`Flex: ${queue.tier} ${queue.rank}`);
             }
         });
-        return resp.join(" ");
+        return resp.join("\n");
     } catch (err) {
         return "Erro na conexão com a API da Rito Gomes!";
     }
