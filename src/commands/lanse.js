@@ -6,8 +6,8 @@ module.exports = {
     },
     get command() {
         return {
-            name: 'cu',
-            usage: 'cu'
+            name: 'lanse',
+            usage: 'lanse'
         }
     }
 }
