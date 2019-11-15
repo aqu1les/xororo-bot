@@ -8,7 +8,7 @@ module.exports = {
         cmds.map(cmd => {
             resp.push(`!${cmd.split('.')[0]}`);
         });
-        message.author.send(cmds);
+        message.author.send(resp);
     },
     get command() {
         return {
