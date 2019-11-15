@@ -27,8 +27,8 @@ async function inc_xesque(id, username) {
     }
 }
 module.exports = {
-    run: (client, message) => {
-        const xesques = inc_xesque(message.author.id, message.author.username);
+    run: async (client, message) => {
+        const xesques = await inc_xesque(message.author.id, message.author.username);
         return message.channel.send(`Você xamou no xesque ${xesques} vezes !`);
     },
     get command() {

@@ -14,11 +14,7 @@ client.commands = new Enmap();
 const init = async () => {
     const cmds = await fs.readdir('src/commands');
 
-    try {
-        mongoose.connect(`mongodb+srv://aqu1les:${process.env.password}>@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`, { useNewUrlParser: true })
-    } catch (e) {
-        console.log(e);
-    }
+    mongoose.connect(`mongodb+srv://aqu1les:${process.env.password}>@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 
     cmds.map(f => {
         try {
