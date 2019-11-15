@@ -14,7 +14,12 @@ client.commands = new Enmap();
 const init = async () => {
     const cmds = await fs.readdir('src/commands');
 
-    mongoose.connect(`mongodb+srv://aqu1les:${process.env.password}>@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(`mongodb+srv://aqu1les:${process.env.password}@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+        .then(() => console.log("Connected to mongodb Atlas"))
+        .catch(err => console.log(err));
 
     cmds.map(f => {
         try {
