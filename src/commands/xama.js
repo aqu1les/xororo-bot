@@ -12,7 +12,7 @@ const User = mongoose.model('user', UserSchema);
 async function inc_xesque(id, username) {
     const user = await User.find({ uid: id });
     if (user) {
-        user.set({ xesques: user.xesques + 1 });
+        user.xesques = user.xesques + 1;
         user.save()
             .then(u => {
                 return u.xesques;
