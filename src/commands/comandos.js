@@ -1,9 +1,14 @@
 const Discord = require('discord.js');
-const { currentCommands } = require('../commands.js');
+const fs = require('fs-extra');
 
 module.exports = {
-    run: (client, message, args) => {
-        message.author.send(currentCommands);
+    run: async (client, message, args) => {
+        const cmds = await fs.readdir("src/commands");
+        let resp = [];
+        cmds.map(cmd => {
+            resp.push(`!${cmd.split('.')[0]}`);
+        });
+        message.author.send(cmds);
     },
     get command() {
         return {
