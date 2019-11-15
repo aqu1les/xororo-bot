@@ -23,6 +23,7 @@ async function inc_xesque(id, username) {
 module.exports = {
     run: async (client, message) => {
         const xesques = await inc_xesque(message.author.id, message.author.username);
+        if (xesques === 1) return message.reply(`xamou no xesque pela primeira vez!`);
         return message.channel.send(`Você xamou no xesque ${xesques} vezes !`);
     },
     get command() {
