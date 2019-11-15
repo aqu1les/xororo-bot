@@ -14,7 +14,7 @@ async function inc_xesque(id, username) {
     if (user) {
         user.xesques = user.xesques + 1;
         await user.save();
-        return user.xesques + 1;
+        return user.xesques;
     } else {
         await User.create({ uid: id, name: username, xesques: 1 });
         return 1;
