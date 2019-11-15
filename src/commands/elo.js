@@ -26,7 +26,7 @@ module.exports = {
     run: async (client, message, args) => {
         const username = String(args.join(""));
         const response = await getElo(username);
-        message.channel.send(response);
+        message.channel.send(`${args.join(" ")}\n${response}`);
     },
     get command() {
         return {
