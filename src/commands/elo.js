@@ -9,9 +9,10 @@ async function getElo(username) {
     const resp = [];
     eloResponse.data.forEach(queue => {
         if (queue.queueType === "RANKED_SOLO_5X5") {
-            resp.push(`Solo: ${queue.tier} ${queue.rank}`)
-        } else if (queue.queueType === "RANKED_FLEX_SR") {
-            resp.push(`Flex: ${queue.tier} ${queue.rank}`)
+            return resp.push(`Solo: ${queue.tier} ${queue.rank}`);
+        }
+        if (queue.queueType === "RANKED_FLEX_SR") {
+            return resp.push(`Flex: ${queue.tier} ${queue.rank}`);
         }
     });
     return resp;
@@ -19,7 +20,8 @@ async function getElo(username) {
 
 module.exports = {
     run: async (client, message, args) => {
-        const username = String(args).trim();
+        return console.log(args);
+        const username = String(args);
         const response = await getElo(username);
         message.channel.send(response);
     },
