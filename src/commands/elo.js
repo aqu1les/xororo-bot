@@ -20,8 +20,7 @@ async function getElo(username) {
 
 module.exports = {
     run: async (client, message, args) => {
-        return console.log(args);
-        const username = String(args);
+        const username = String(args.join());
         const response = await getElo(username);
         message.channel.send(response);
     },
