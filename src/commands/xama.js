@@ -13,17 +13,11 @@ async function inc_xesque(id, username) {
     const user = await User.findOne({ uid: id });
     if (user) {
         user.xesques = user.xesques + 1;
-        user.save()
-            .then(u => {
-                return u.xesques;
-            })
-            .catch(err => console.log(err));
+        await user.save();
+        return user.xesques + 1;
     } else {
-        User.create({ uid: id, name: username, xesques: 1 })
-            .then(u => {
-                return u.xesques;
-            })
-            .catch(err => console.log(err));
+        await User.create({ uid: id, name: username, xesques: 1 });
+        return 1;
     }
 }
 module.exports = {
