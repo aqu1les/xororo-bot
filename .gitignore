@@ -1,3 +1,5 @@
 node_modules
 teste.js
 .env
+src/index.dev.js
+src/logs

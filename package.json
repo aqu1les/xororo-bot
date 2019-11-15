@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node src/index.js",
-        "dev": "nodemon src/index.js"
+        "dev": "nodemon src/index.dev.js"
     },
     "repository": "https://github.com/aqu1les/xororo-bot",
     "keywords": [
@@ -16,6 +16,7 @@
     "author": "aqu1les",
     "license": "ISC",
     "devDependencies": {
+        "dotenv": "^8.2.0",
         "nodemon": "^1.18.11"
     },
     "dependencies": {
