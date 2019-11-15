@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const db = require('../db/dao');
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
