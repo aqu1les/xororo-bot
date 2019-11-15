@@ -23,10 +23,10 @@ const runCommand = async (client, message) => {
     date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     const logmsg = `[#LOG]: ${date} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
     const name = date + '-log';
-    if (!fs.existsSync()) {
+    if (!fs.existsSync(`src/logs`)) {
         fs.mkdirSync(`src/logs`);
     }
-    fs.appendFile(`src/logs/${name}.txt`, `${logmsg} ${args || ''} \n`, (err) => {
+    fs.appendFile(`src/logs/${name}.txt`, `${logmsg} ${args.join(" ") || ''} \n`, (err) => {
         if (err) throw err;
         console.log(logmsg);
     });
