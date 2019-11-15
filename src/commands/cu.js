@@ -4,7 +4,7 @@ module.exports = {
     run: async (client, message, args) => {
         const chances = Math.round(Math.random() * 100);
         if (chances === 100) {
-            message.reply(` com ${chances}% de chances, você comeu o cu de ${args}. Parabéns!`);
+            return message.reply(` com ${chances}% de chances, você comeu o cu de ${args}. Parabéns!`);
         }
         message.reply(` você tem ${chances}% de chances de comer o cu de @${args}.`);
     },
