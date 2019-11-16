@@ -8,7 +8,7 @@ module.exports = {
         if (chances === 100) {
             return message.reply(` com ${chances}% de chances, você comeu o cu de ${args}. Parabéns!`);
         }
-        message.reply(` você tem ${chances}% de chances de comer o cu de @${args}.`);
+        message.reply(` você tem ${chances}% de chances de comer o cu de ${args}.`);
     },
     get command() {
         return {
