@@ -10,10 +10,10 @@ async function getElo(username) {
         let resp = [];
         await eloResponse.data.map(queue => {
             if (queue.queueType == "RANKED_SOLO_5x5") {
-                resp.push(`Solo: ${queue.tier} ${queue.rank} - ${queue.leaguePoints}`);
+                resp.push(`Solo: ${queue.tier} ${queue.rank} - ${queue.leaguePoints} pdls`);
             }
             if (queue.queueType == "RANKED_FLEX_SR") {
-                resp.push(`Flex: ${queue.tier} ${queue.rank} - ${queue.leaguePoints}`);
+                resp.push(`Flex: ${queue.tier} ${queue.rank} - ${queue.leaguePoints} pdls`);
             }
         });
         return resp.join("\n");
