@@ -21,24 +21,20 @@ async function inc_brabas(id, username) {
         return 1;
     }
 }
-function play(music, connection) {
-    const dispatcher = await connection.playStream(ytdl(music, { filter: "audioonly" }));
-    dispatcher.setVolume(0.1);
+async function play(connection) {
+    const dispatcher = await connection.playStream(ytdl("https://www.youtube.com/watch?v=oowBXzfcl90", { filter: "audioonly" }));
+    dispatcher.setVolume(1);
     dispatcher.on('error', e => {
         console.log(e);
-    });
-    dispatcher.on('end', () => {
-        queue.shift();
-        if (queue.length === 0) connection.disconnect();
     });
 }
 
 module.exports = {
     run: async (client, message, args) => {
         if (args.join(" ") == "a braba") {
-            message.member.voiceChannel.join().then(connection => {
+            message.member.voiceChannel.join().then(async connection => {
                 message.reply('lansando a braba fdp');
-                play("https://www.youtube.com/watch?v=oowBXzfcl90", connection);
+                await play(connection);
             });
         }
         const brabas = await inc_brabas();
