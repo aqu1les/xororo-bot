@@ -1,13 +1,5 @@
 const Discord = require('discord.js');
-const mongoose = require('mongoose');
-
-const UserSchema = new mongoose.Schema({
-    uid: String,
-    name: String,
-    xesques: Number
-});
-
-const User = mongoose.model('user', UserSchema);
+const User = require("../model/User");
 
 async function inc_xesque(id, username) {
     const user = await User.findOne({ uid: id });

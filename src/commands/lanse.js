@@ -1,14 +1,6 @@
 const Discord = require('discord.js');
-const mongoose = require('mongoose');
+const User = require("../model/User");
 const ytdl = require("ytdl-core");
-
-const UserSchema = new mongoose.Schema({
-    uid: String,
-    name: String,
-    xesques: Number,
-    brabas: Number
-});
-const User = mongoose.model('user', UserSchema);
 
 async function inc_brabas(id, username) {
     const user = await User.findOne({ uid: id });
