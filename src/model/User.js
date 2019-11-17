@@ -5,4 +5,4 @@ const UserSchema = new mongoose.Schema({
     xesques: Number,
     brabas: Number
 });
-export const User = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
