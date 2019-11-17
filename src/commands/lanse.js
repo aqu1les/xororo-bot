@@ -29,7 +29,7 @@ module.exports = {
                 await play(connection);
             });
         }
-        const brabas = await inc_brabas();
+        const brabas = await inc_brabas(message.author.id, message.author.username);
         if (brabas === 1) return message.reply(`lansou a braba pela primeira vez!`);
         return message.channel.send(`Você lansou a braba ${brabas} vezes, fdp`);
     },
