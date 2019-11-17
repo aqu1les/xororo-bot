@@ -5,6 +5,7 @@ module.exports = {
         if (!message.guild.voiceConnection) {
             message.member.voiceChannel.join().then(connection => {
                 message.channel.send(`Entrei fodase !`);
+                message.channel.send(`!play shake it bololo`);
             });
         } else {
             if (message.guild.voiceConnection.channel.name == message.member.voiceChannel.name) {
