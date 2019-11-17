@@ -4,8 +4,7 @@ module.exports = {
     run: (client, message) => {
         if (!message.guild.voiceConnection) {
             message.member.voiceChannel.join().then(connection => {
-                message.channel.send(`Entrei fodase !`);
-                message.channel.send(`!play shake it bololo`);
+                message.channel.send(`entrei fodase`);
             });
         } else {
             if (message.guild.voiceConnection.channel.name == message.member.voiceChannel.name) {
