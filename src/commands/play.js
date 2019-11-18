@@ -11,12 +11,13 @@ async function play(connection, message) {
         .setColor("#e80a21")
         .setTitle(`Vo toca essa braba aqui`)
         .setDescription(music.title)
+        .setURL(music.link || music.url)
         .setThumbnail(music.thumbnail)
         .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
         .setTimestamp();
 
     message.channel.send(embed);
-    const dispatcher = await connection.playStream(await ytdl(music.link || music.url, { filter: "audioonly" }));
+    const dispatcher = await connection.playStream(ytdl(music.link || music.url, { filter: "audioonly" }));
     dispatcher.setVolume(1);
     connection.on("disconnect", () => {
         ytQueue = [];
@@ -31,42 +32,60 @@ async function play(connection, message) {
         play(connection, message);
     });
 }
-
+async function searchMusic(name) {
+    const response = await ytsr(name);
+    const musics = response.items.filter(item => item.type === "video");
+    return musics[0];
+}
+async function getPlaylist(playlistLink) {
+    const musics = await ytpl(playlistLink);
+    return musics.items;
+}
 module.exports = {
-    run: (client, message, args) => {
+    run: async (client, message, args) => {
         if (args.length !== 0) {
-            if (args.length === 1 && ytpl.validateURL(args[0])) {
-                return ytpl(args[0], (err, playlist) => {
-                    if (err) return message.channel.send("deu pra carregar a playlist nao irmao");
-                    message.member.voiceChannel.join()
-                        .then(async connection => {
-                            let totalMusicas = 0;
-                            await playlist.items.map(item => {
-                                    ytQueue.push(item);
-                                    totalMusicas++;
-                                });
-                            const embed = new RichEmbed()
-                                .setColor("#e80a21")
-                                .setTitle(`Playlist`)
-                                .setDescription(`${totalMusicas} músicas foram adicionadas à playlist.`)
-                                .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
-                                .setTimestamp();
-                            message.channel.send(embed);
-                            play(connection, message);
-                        }).catch(err => {
-                            return message.reply("deu pra tocar nao flw");
+            if (message.guild.voiceConnection) {
+                if (message.guild.voiceConnection.player) {
+                    if (args.length === 1 && ytpl.validateURL(args[0])) {
+                        const musics = await getPlaylist(args[0]);
+                        musics.map(music => {
+                            ytQueue.push(music);
                         });
-                });
+                        return message.channel.send(`${musics.length} músicas adicionadas à playlist.`);
+                    } else {
+                        const music = await searchMusic(args.join(" "));
+                        ytQueue.push(music);
+                        return message.channel.send(`${music.title} foi adicionada à playlist.`);
+                    }
+                }
+            }
+            if (args.length === 1 && ytpl.validateURL(args[0])) {
+                message.member.voiceChannel.join()
+                    .then(async connection => {
+                        const musics = await getPlaylist(args[0]);
+                        musics.map(music => {
+                            ytQueue.push(music);
+                        });
+                        const embed = new RichEmbed()
+                            .setColor("#e80a21")
+                            .setTitle(`Playlist`)
+                            .setDescription(`${musics.length} músicas foram adicionadas à playlist.`)
+                            .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
+                            .setTimestamp();
+                        message.channel.send(embed);
+                        play(connection, message);
+                    }).catch(err => {
+                        console.log(err);
+                        return message.reply("deu pra tocar nao flw");
+                    });
             } else {
                 message.member.voiceChannel.join()
                     .then(async connection => {
-                        message.reply('chego chegando');
-                        let musics = await ytsr(args.join(" "));
-                        musics = musics.items.filter(item => item.type === "video");
-                        ytQueue.push(musics[0]);
+                        let music = await searchMusic(args.join(" "));
+                        ytQueue.push(music);
                         play(connection, message);
                     }).catch(err => {
-                        return message.reply("deu pra tocar nao flw");
+                        return message.reply("não da pra entrar no seu canal");
                     });
             }
         } else {
