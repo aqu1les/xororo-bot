@@ -18,6 +18,9 @@ async function play(connection, message) {
     message.channel.send(embed);
     const dispatcher = await connection.playStream(await ytdl(music.link || music.url, { filter: "audioonly" }));
     dispatcher.setVolume(1);
+    connection.on("disconnect", () => {
+        ytQueue = [];
+    });
     dispatcher.on('error', e => {
         console.log(e);
     });
