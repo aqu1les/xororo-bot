@@ -27,8 +27,8 @@ async function play(connection, message) {
     });
     dispatcher.on('end', () => {
         ytQueue.shift();
-        play(connection, message);
         if (ytQueue.length === 0) return connection.disconnect();
+        play(connection, message);
     });
 }
 
