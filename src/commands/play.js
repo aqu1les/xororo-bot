@@ -47,7 +47,7 @@ module.exports = {
                 message.member.voiceChannel.join()
                     .then(async connection => {
                         message.reply('chego chegando');
-                        let musics = await ytsr(args[0]);
+                        let musics = await ytsr(args.join(" "));
                         musics = musics.items.filter(item => item.type === "video");
                         ytQueue.push(musics[0]);
                         play(connection, message);
