@@ -48,7 +48,7 @@ module.exports = {
                             const embed = new RichEmbed()
                                 .setColor("#e80a21")
                                 .setTitle(`Playlist`)
-                                .setDescription(`${totalMusicas} foram adicionadas à playlist.`)
+                                .setDescription(`${totalMusicas} músicas foram adicionadas à playlist.`)
                                 .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
                                 .setTimestamp();
                             message.channel.send(embed);
