@@ -13,7 +13,7 @@ async function play(connection, message) {
         .setDescription(music.title)
         .setThumbnail(music.thumbnail)
         .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
-        .setTimestamp()
+        .setTimestamp();
 
     message.channel.send(embed);
     const dispatcher = await connection.playStream(await ytdl(music.link || music.url, { filter: "audioonly" }));
@@ -39,9 +39,19 @@ module.exports = {
                 return ytpl(args[0], (err, playlist) => {
                     if (err) return message.channel.send("deu pra carregar a playlist nao irmao");
                     message.member.voiceChannel.join()
-                        .then(connection => {
-                            message.reply("vo lansa as braba fodase");
-                            playlist.items.map(item => ytQueue.push(item));
+                        .then(async connection => {
+                            let totalMusicas = 0;
+                            await playlist.items.map(item => {
+                                    ytQueue.push(item);
+                                    totalMusicas++;
+                                });
+                            const embed = new RichEmbed()
+                                .setColor("#e80a21")
+                                .setTitle(`Playlist`)
+                                .setDescription(`${totalMusicas} foram adicionadas à playlist.`)
+                                .setFooter("aqu1les", "https://i.imgur.com/FYaQiTu.jpg")
+                                .setTimestamp();
+                            message.channel.send(embed);
                             play(connection, message);
                         }).catch(err => {
                             return message.reply("deu pra tocar nao flw");
