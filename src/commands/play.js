@@ -49,7 +49,7 @@ module.exports = {
                         message.reply('chego chegando');
                         let musics = await ytsr(args[0]);
                         musics = musics.items.filter(item => item.type === "video");
-                        musics.map(music => ytQueue.push(music));
+                        ytQueue.push(musics[0]);
                         play(connection, message);
                     }).catch(err => {
                         return message.reply("deu pra tocar nao flw");
