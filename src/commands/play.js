@@ -20,6 +20,7 @@ async function play(connection, message) {
     dispatcher.setVolume(1);
     connection.on("disconnect", () => {
         ytQueue = [];
+        ytQueue.length = 0;
     });
     dispatcher.on('error', e => {
         console.log(e);
