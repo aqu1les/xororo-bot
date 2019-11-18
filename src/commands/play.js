@@ -37,7 +37,7 @@ module.exports = {
                     message.member.voiceChannel.join()
                         .then(connection => {
                             message.reply("vo lansa as braba fodase");
-                            ytQueue.push(playlist.items);
+                            playlist.items.map(item => ytQueue.push(item));
                             play(connection, message);
                         }).catch(err => {
                             return message.reply("deu pra tocar nao flw");
@@ -49,7 +49,7 @@ module.exports = {
                         message.reply('chego chegando');
                         let musics = await ytsr(args[0]);
                         musics = musics.items.filter(item => item.type === "video");
-                        ytQueue.push(musics[0]);
+                        musics.map(music => ytQueue.push(music));
                         play(connection, message);
                     }).catch(err => {
                         return message.reply("deu pra tocar nao flw");
