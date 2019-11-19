@@ -19,6 +19,9 @@ async function play(connection) {
     dispatcher.on('error', e => {
         console.log(e);
     });
+    dispatcher.on('end', () => {
+        return connection.disconnect();
+    });
 }
 
 module.exports = {
