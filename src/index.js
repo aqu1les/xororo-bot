@@ -49,7 +49,7 @@ const init = async () => {
     client.on('error', err => console.log(err));
     client.on('ready', () => {
         client.user.setActivity("AIDS PRA GERAL", {
-            type: "STREAMING"
+            type: STREAMING
         })
         .then(console.log)
         .catch(console.error);
