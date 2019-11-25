@@ -48,9 +48,11 @@ const init = async () => {
 
     client.on('error', err => console.log(err));
     client.on('ready', () => {
-        client.user.setPresence({ game: { name: 'n eh da sua conta' }, status: 'comendo cu' })
-            .then(console.log)
-            .catch(console.error);
+        client.user.setActivity("AIDS PRA GERAL", {
+            type: "STREAMING"
+        })
+        .then(console.log)
+        .catch(console.error);
     });
     client.login(process.env.secret);
 }
