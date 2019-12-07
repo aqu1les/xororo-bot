@@ -2,11 +2,10 @@ const { Client, RichEmbed } = require('discord.js');
 const ytdl = require('ytdl-core');
 const ytsr = require("ytsr");
 const ytpl = require('ytpl');
-
-let ytQueue = [];
+const playlist = require('../features/playlist');
 
 async function play(connection, message) {
-    music = ytQueue[0];
+    music = playlist.getFirstMusic();
     const embed = new RichEmbed()
         .setColor("#e80a21")
         .setTitle(`Vo toca essa braba aqui`)
@@ -20,15 +19,13 @@ async function play(connection, message) {
     const dispatcher = await connection.playStream(ytdl(music.link || music.url, { filter: "audioonly" }));
     dispatcher.setVolume(1);
     connection.on("disconnect", () => {
-        ytQueue = [];
-        ytQueue.length = 0;
+        playlist.setPlaylist();
     });
     dispatcher.on('error', e => {
         console.log(e);
     });
     dispatcher.on('end', () => {
-        ytQueue.shift();
-        if (ytQueue.length === 0) return connection.disconnect();
+        if (playlist.getLength === 0) return connection.disconnect();
         play(connection, message);
     });
 }
@@ -49,12 +46,12 @@ module.exports = {
                     if (args.length === 1 && ytpl.validateURL(args[0])) {
                         const musics = await getPlaylist(args[0]);
                         musics.map(music => {
-                            ytQueue.push(music);
+                            playlist.addMusic(music);
                         });
                         return message.channel.send(`${musics.length} músicas adicionadas à playlist.`);
                     } else {
                         const music = await searchMusic(args.join(" "));
-                        ytQueue.push(music);
+                        playlist.addMusic(music);
                         return message.channel.send(`${music.title} foi adicionada à playlist.`);
                     }
                 }
@@ -64,7 +61,7 @@ module.exports = {
                     .then(async connection => {
                         const musics = await getPlaylist(args[0]);
                         musics.map(music => {
-                            ytQueue.push(music);
+                            playlist.addMusic(music);
                         });
                         const embed = new RichEmbed()
                             .setColor("#e80a21")
@@ -82,7 +79,7 @@ module.exports = {
                 message.member.voiceChannel.join()
                     .then(async connection => {
                         let music = await searchMusic(args.join(" "));
-                        ytQueue.push(music);
+                        playlist.addMusic(music);
                         play(connection, message);
                     }).catch(err => {
                         return message.reply("não da pra entrar no seu canal");
