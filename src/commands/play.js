@@ -25,7 +25,7 @@ async function play(connection, message) {
         console.log(e);
     });
     dispatcher.on('end', () => {
-        if (playlist.getLength === 0) return connection.disconnect();
+        if (playlist.getLength() === 0) return connection.disconnect();
         play(connection, message);
     });
 }
