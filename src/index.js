@@ -7,7 +7,12 @@ const client = new Discord.Client({ forceFetchUser: true });
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity({ activity: { name: 'você comer o cu dos outros', type: 'WATCHING' }, status: 'online' })
+        .then(console.log)
+        .catch(console.error);
 });
+
+client.on('error', err => console.log(err));
 
 client.commands = new Enmap();
 
@@ -38,6 +43,7 @@ const init = async () => {
     });
 
     const evt = await fs.readdir('src/events');
+
     evt.map(f => {
         const eventName = f.split('.')[0];
 
@@ -46,14 +52,6 @@ const init = async () => {
         client.on(eventName, event.bind(null, client));
     });
 
-    client.on('error', err => console.log(err));
-    client.on('ready', () => {
-        client.user.setActivity("AIDS PRA GERAL", {
-            type: "STREAMING"
-        })
-        .then(console.log)
-        .catch(console.error);
-    });
     client.login(process.env.secret);
 }
 
