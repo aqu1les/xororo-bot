@@ -15,10 +15,10 @@ async function get_cus_comidos(id, username) {
 
             console.log(resp);
 
-            let response_string = '';
+            let response_string = 'Você comeu:';
 
             for(let user in resp) {
-                response_string += `\n Você comeu o cu de ${user} ${resp[user]}x`;
+                response_string += `\n${user} ${resp[user]}x`;
             }
             resp = response_string;
         } else {
