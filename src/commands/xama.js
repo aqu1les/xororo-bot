@@ -12,6 +12,7 @@ async function inc_xesque(id, username) {
         return 1;
     }
 }
+
 module.exports = {
     run: async (client, message) => {
         const xesques = await inc_xesque(message.author.id, message.author.username);
