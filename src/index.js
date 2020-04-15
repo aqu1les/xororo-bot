@@ -7,8 +7,8 @@ const client = new Discord.Client({ forceFetchUser: true });
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity({ activity: { name: 'você comer o cu dos outros', type: 'WATCHING' }, status: 'online' })
-        .then(console.log)
+    client.user.setActivity('você comer o cu dos outros', { type: 'WATCHING' })
+        .then(r => console.log('Changed'))
         .catch(console.error);
 });
 
