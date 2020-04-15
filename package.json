@@ -1,6 +1,6 @@
 {
     "name": "xororo-bot",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Bot discord apenas para testes",
     "main": "src/index.js",
     "scripts": {
@@ -17,22 +17,22 @@
     "license": "ISC",
     "devDependencies": {
         "dotenv": "^8.2.0",
-        "nodemon": "^1.18.11"
+        "nodemon": "^1.19.4"
     },
     "dependencies": {
-        "axios": "^0.19.0",
+        "axios": "^0.19.2",
         "bufferutil": "^4.0.1",
-        "discord.js": "^11.5.1",
-        "enmap": "^4.8.4",
+        "discord.js": "^11.6.4",
+        "enmap": "^4.8.7",
         "erlpack": "github:discordapp/erlpack",
         "ffmpeg": "0.0.4",
         "fs-extra": "^7.0.1",
-        "mongoose": "^5.7.11",
+        "mongoose": "^5.9.9",
         "node-opus": "^0.3.3",
         "opusscript": "0.0.7",
-        "ytdl-core": "^1.0.0",
-        "ytdl-core-discord": "^1.0.3",
-        "ytpl": "^0.1.18",
-        "ytsr": "^0.1.9"
+        "ytdl-core": "^1.0.9",
+        "ytdl-core-discord": "^1.2.0",
+        "ytpl": "^0.1.20",
+        "ytsr": "^0.1.12"
     }
 }
