@@ -2,35 +2,25 @@ const Discord = require('discord.js');
 const User = require("../model/User");
 
 async function get_cus_comidos(id, username) {
-    const user = await User.findOne({ uid: id });
-
-    if (user) {
-        let resp = {};
-
-        if(user.cus_comidos.length > 0) {
-
-            user.cus_comidos.forEach(id => {
-                resp[id] = resp[id] ? resp[id] + 1 : 1;
-            });
-
-            console.log(resp);
-
-            let response_string = 'Você comeu:';
-
-            for(let user in resp) {
-                response_string += `\n${user} ${resp[user]}x`;
-            }
-            resp = response_string;
-        } else {
-            resp = 'você ainda não comeu o cu de ninguém';
-        }
-
-        return resp;
-    } else {
+    const user =
+        await User.findOne({ uid: id }) ||
         await User.create({ uid: id, name: username });
 
+    if (user.cus_comidos.length === 0) {
         return 'você ainda não comeu o cu de ninguém';
     }
+
+    const cus_comidos = user.cus_comidos.reduce(
+        (users, id) => ({ ...users, [id]: users[id] ? users[id] + 1 : 1 }),
+        {}
+    );
+
+    const response = Object
+        .entries(cus_comidos)
+        .map(([username, times]) => `${username} ${times}x`)
+        .join('\n');
+
+    return `Você comeu:\n${response}`;
 }
 
 module.exports = {
