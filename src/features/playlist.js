@@ -1,17 +1,33 @@
-class Playlist {
-    playlist = [];
-    addMusic(music) {
-        this.playlist.push(music);
+module.exports = function Player() {
+    const channels = {};
+
+    async function addMusic(music, guildId) {
+        if (!channels[guildId]) setPlaylist(guildId);
+        channels[guildId].playlist.push(music);
     }
-    getFirstMusic() {
-        return this.playlist.shift();
+
+    function getFirstMusic(guildId) {
+        return channels[guildId].playlist.shift();
     }
-    setPlaylist() {
-        this.playlist = [];
-        this.playlist.length = 0;
+
+    function getPlaylist(guildId) {
+        return channels[guildId].playlist;
     }
-    getLength() {
-        return this.playlist.length;
+
+    function setPlaylist(guildId) {
+        if (!channels[guildId]) channels[guildId] = {};
+        channels[guildId].playlist = [];
     }
-}
-module.exports = new Playlist();
+
+    function getPlaylistLength(guildId) {
+        return channels[guildId].playlist.length;
+    }
+
+    return {
+        addMusic,
+        getFirstMusic,
+        getPlaylist,
+        setPlaylist,
+        getPlaylistLength,
+    };
+};

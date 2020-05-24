@@ -1,14 +1,13 @@
-const Discord = require('discord.js');
-
 module.exports = {
     run: (client, message) => {
-        if(message.guild.voiceConnection) {
+        if (message.guild.voiceConnection) {
             const dispatcher = message.guild.voiceConnection.dispatcher;
-            if(dispatcher) {
-                if(dispatcher.paused){
+            if (dispatcher) {
+                if (dispatcher.paused) {
                     dispatcher.resume();
                 }
                 dispatcher.pause();
+                message.react('⏸️');
             }
         }
         return;
@@ -16,7 +15,7 @@ module.exports = {
     get command() {
         return {
             name: 'pause',
-            usage: 'pause'
-        }
-    }
-}
+            usage: 'pause',
+        };
+    },
+};

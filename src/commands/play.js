@@ -1,115 +1,137 @@
-const { RichEmbed } = require('discord.js');
 const ytdl = require('ytdl-core');
-const ytsr = require('ytsr');
-const ytpl = require('ytpl');
-const playlist = require('../features/playlist');
+const ytb = require('../adapters/ytb');
+const playlist = require('../features/playlist')();
+const createEmbed = require('../adapters/embed');
 
 let author = {};
 
 async function play(connection, message) {
-    let music = playlist.getFirstMusic();
-    
-    const embed = new RichEmbed()
-        .setColor('#e80a21')
-        .setTitle(`Vo toca essa braba aqui`)
-        .setDescription(music.title)
-        .setURL(music.link || music.url)
-        .setThumbnail(music.thumbnail)
-        .setFooter(author.username || 'aqu1les', author.avatarURL || 'https://i.imgur.com/FYaQiTu.jpg')
-        .setTimestamp();
+    const music = playlist.getFirstMusic(message.guild.id);
 
-    message.channel.send(embed);
+    const clientResponse = createEmbed(
+        `Vo toca essa braba aqui`,
+        '#e80a21',
+        music.title,
+        music.link || music.url,
+        music.thumbnail,
+        {
+            text: author.username || 'aqu1les',
+            icon: author.avatarURL || 'https://i.imgur.com/FYaQiTu.jpg',
+        },
+        true
+    );
 
-    try {
-        const musicStream = await ytdl(music.link || music.url, { filter: 'audio' });
-        const dispatcher = await connection.playStream(musicStream);
-        dispatcher.setVolume(1);
-        connection.on('disconnect', () => {
-            playlist.setPlaylist();
-        });
-        dispatcher.on('error', e => {
-            console.log(e);
-        });
-        dispatcher.on('end', () => {
-            if (playlist.getLength() === 0) return connection.disconnect();
-            play(connection, message);
-        });
+    message.channel.send(clientResponse);
+    const playableData = await ytdl(music.link || music.url, {
+        filter: 'audio',
+    });
+    const dispatcher = connection.playStream(playableData);
+    dispatcher.setVolume(1);
 
-    } catch(e) {
+    dispatcher.on('error', (e) => {
         console.log(e);
-    }
+    });
+
+    dispatcher.on('end', () => {
+        if (playlist.getPlaylistLength(message.guild.id) === 0)
+            return connection.disconnect();
+        play(connection, message);
+    });
+
+    connection.on('disconnect', () => {
+        playlist.setPlaylist(message.guild.id);
+    });
 }
 
-async function searchMusic(name) {
-    const response = await ytsr(name, { limit: 1 });
-    const musics = response.items.filter(item => item.type === 'video');
-    return musics[0];
+async function handlePlaylist(playlistURL, serverID) {
+    const musics = await ytb.fetchPlaylist(playlistURL);
+    musics.map((music) => {
+        playlist.addMusic(music, serverID);
+    });
+    return musics.length;
 }
 
-async function getPlaylist(playlistLink) {
-    const musics = await ytpl(playlistLink);
-    return musics.items;
+async function handleYtbSearch(keywords, serverID) {
+    const music = await ytb.search(keywords);
+    playlist.addMusic(music, serverID);
+    return music;
 }
 
 module.exports = {
     run: async (client, message, args) => {
         author = await client.fetchUser('246470177376567297');
-        if (args.length !== 0) {
-            if (message.guild.voiceConnection) {
-                if (message.guild.voiceConnection.player) {
-                    if (args.length === 1 && ytpl.validateURL(args[0])) {
-                        const musics = await getPlaylist(args[0]);
-                        musics.map(music => {
-                            playlist.addMusic(music);
+        try {
+            if (args.length !== 0) {
+                /* Se o bot não tiver no canal */
+                if (!message.guild.voiceConnection) {
+                    const connection = await message.member.voiceChannel
+                        .join()
+                        .catch((err) => {
+                            console.log(err);
+                            return message.reply('não dá pra entrar ai viado');
                         });
-                        return message.channel.send(`${musics.length} músicas adicionadas à playlist.`);
+
+                    if (args.length === 1 && ytb.validateURL(args[0])) {
+                        await handlePlaylist(args[0], message.guild.id);
                     } else {
-                        const music = await searchMusic(args.join(' '));
-                        playlist.addMusic(music);
-                        return message.channel.send(`${music.title} foi adicionada à playlist.`);
+                        await handleYtbSearch(args.join(' '), message.guild.id);
+                    }
+
+                    play(connection, message);
+                } else {
+                    if (args.length === 1 && ytb.validateURL(args[0])) {
+                        try {
+                            const totalMusics = await handlePlaylist(
+                                args[0],
+                                message.guild.id
+                            );
+                            message.channel.send(
+                                `${totalMusics} músicas adicionadas à playlist.`
+                            );
+                        } catch (e) {
+                            message.channel.send(
+                                'deu erro adicionando as musicas da playlist parsero'
+                            );
+                        }
+
+                        return;
+                    } else {
+                        const music = await handleYtbSearch(
+                            args.join(' '),
+                            message.guild.id
+                        );
+
+                        const clientResponse = createEmbed(
+                            `Música adicionada à playlist`,
+                            '#e80a21',
+                            music.title,
+                            music.link || music.url,
+                            music.thumbnail
+                        );
+
+                        message.channel.send(clientResponse);
+                        return;
                     }
                 }
-            }
-            if (args.length === 1 && ytpl.validateURL(args[0])) {
-                message.member.voiceChannel.join()
-                    .then(async connection => {
-                        const musics = await getPlaylist(args[0]);
-                        musics.map(music => {
-                            playlist.addMusic(music);
-                        });
-                        const embed = new RichEmbed()
-                            .setColor('#e80a21')
-                            .setTitle(`Playlist`)
-                            .setDescription(`${musics.length} músicas foram adicionadas à playlist.`)
-                            .setFooter('aqu1les', 'https://i.imgur.com/FYaQiTu.jpg')
-                            .setTimestamp();
-                        message.channel.send(embed);
-                        play(connection, message);
-                    }).catch(err => {
-                        console.log(err);
-                        return message.reply('deu pra tocar nao flw');
-                    });
             } else {
-                message.member.voiceChannel.join()
-                    .then(async connection => {
-                        let music = await searchMusic(args.join(' '));
-                        playlist.addMusic(music);
-                        play(connection, message);
-                    }).catch(err => {
-                        return message.reply('não da pra entrar no seu canal');
-                    });
+                if (!message.guild.voiceConnection)
+                    return message.reply(
+                        'use !play <nome da musica> ou !play <link da musica no youtube> para tocar'
+                    );
+                if (message.guild.voiceConnection.player) {
+                    message.guild.voiceConnection.player.dispatcher.resume();
+                    message.react('▶️');
+                }
             }
-        } else {
-            if (!message.guild.voiceConnection) return;
-            if (message.guild.voiceConnection.player) {
-                message.guild.voiceConnection.player.dispatcher.resume();
-            }
+        } catch (e) {
+            console.error(e);
+            return message.reply('foi mal viado, deu algum erro aqui');
         }
     },
     get command() {
         return {
             name: 'play',
-            usage: 'play'
-        }
-    }
-}
+            usage: 'play',
+        };
+    },
+};

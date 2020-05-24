@@ -1,7 +1,7 @@
 {
     "name": "xororo-bot",
-    "version": "1.0.2",
-    "description": "Bot discord apenas para testes",
+    "version": "1.1.0",
+    "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
     "main": "src/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,7 +20,7 @@
         "nodemon": "^1.19.4"
     },
     "dependencies": {
-        "@discordjs/opus": "^0.1.0",
+        "@discordjs/opus": "^0.3.2",
         "axios": "^0.19.2",
         "bufferutil": "^4.0.1",
         "discord.js": "^11.6.4",
@@ -28,8 +28,7 @@
         "erlpack": "github:discordapp/erlpack",
         "ffmpeg": "0.0.4",
         "fs-extra": "^7.0.1",
-        "mongoose": "^5.9.9",
-        "node-opus": "^0.3.3",
+        "mongoose": "^5.9.15",
         "opusscript": "0.0.7",
         "ytdl-core": "^1.0.9",
         "ytdl-core-discord": "^1.2.0",
