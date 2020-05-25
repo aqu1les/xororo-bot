@@ -1,6 +1,6 @@
 {
     "name": "xororo-bot",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
     "main": "src/index.js",
     "scripts": {
@@ -25,11 +25,13 @@
         "bufferutil": "^4.0.1",
         "discord.js": "^11.6.4",
         "enmap": "^4.8.7",
-        "erlpack": "github:discordapp/erlpack",
+        "erlpack": "github:hammerandchisel/erlpack",
         "ffmpeg": "0.0.4",
         "fs-extra": "^7.0.1",
+        "libsodium-wrappers": "^0.7.6",
         "mongoose": "^5.9.15",
         "opusscript": "0.0.7",
+        "utf-8-validate": "^5.0.2",
         "ytdl-core": "^1.0.9",
         "ytdl-core-discord": "^1.2.0",
         "ytpl": "^0.1.20",

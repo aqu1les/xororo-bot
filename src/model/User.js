@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     name: String,
     xesques: { type: Number, default: 0 },
     brabas: { type: Number, default: 0 },
-    cus_comidos: { type: Array, default: [] }
+    cus_comidos: { type: Array, default: [] },
 });
 
 module.exports = mongoose.model('user', UserSchema);

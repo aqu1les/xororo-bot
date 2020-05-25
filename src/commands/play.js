@@ -4,9 +4,10 @@ const playlist = require('../features/playlist')();
 const createEmbed = require('../adapters/embed');
 
 let author = {};
+let channelID = null;
 
 async function play(connection, message) {
-    const music = playlist.getFirstMusic(message.guild.id);
+    const music = playlist.getFirstMusic(channelID);
 
     const clientResponse = createEmbed(
         `Vo toca essa braba aqui`,
@@ -33,13 +34,14 @@ async function play(connection, message) {
     });
 
     dispatcher.on('end', () => {
-        if (playlist.getPlaylistLength(message.guild.id) === 0)
+        playlist.popMusic(channelID);
+        if (playlist.getPlaylistLength(channelID) === 0)
             return connection.disconnect();
         play(connection, message);
     });
 
     connection.on('disconnect', () => {
-        playlist.setPlaylist(message.guild.id);
+        playlist.setPlaylist(channelID);
     });
 }
 
@@ -60,6 +62,7 @@ async function handleYtbSearch(keywords, serverID) {
 module.exports = {
     run: async (client, message, args) => {
         author = await client.fetchUser('246470177376567297');
+        channelID = message.guild.id;
         try {
             if (args.length !== 0) {
                 /* Se o bot não tiver no canal */
@@ -72,9 +75,9 @@ module.exports = {
                         });
 
                     if (args.length === 1 && ytb.validateURL(args[0])) {
-                        await handlePlaylist(args[0], message.guild.id);
+                        await handlePlaylist(args[0], channelID);
                     } else {
-                        await handleYtbSearch(args.join(' '), message.guild.id);
+                        await handleYtbSearch(args.join(' '), channelID);
                     }
 
                     play(connection, message);
@@ -83,7 +86,7 @@ module.exports = {
                         try {
                             const totalMusics = await handlePlaylist(
                                 args[0],
-                                message.guild.id
+                                channelID
                             );
                             message.channel.send(
                                 `${totalMusics} músicas adicionadas à playlist.`
@@ -98,7 +101,7 @@ module.exports = {
                     } else {
                         const music = await handleYtbSearch(
                             args.join(' '),
-                            message.guild.id
+                            channelID
                         );
 
                         const clientResponse = createEmbed(

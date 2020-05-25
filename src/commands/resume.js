@@ -1,13 +1,11 @@
-const Discord = require('discord.js');
-
 module.exports = {
     run: (client, message) => {
-        if(!message.guild.voiceConnection){ 
+        if (!message.guild.voiceConnection) {
             return message.reply('There is nothing to resume :)');
         }
-        if(message.guild.voiceConnection.player){
+        if (message.guild.voiceConnection.player) {
             const dispatcher = message.guild.voiceConnection.player.dispatcher;
-            if(dispatcher.paused){
+            if (dispatcher.paused) {
                 dispatcher.resume();
             }
         }
@@ -15,7 +13,7 @@ module.exports = {
     get command() {
         return {
             name: 'resume',
-            usage: 'resume'
-        }
-    }
-}
+            usage: 'resume',
+        };
+    },
+};

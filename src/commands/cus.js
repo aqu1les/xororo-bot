@@ -1,10 +1,9 @@
-const Discord = require('discord.js');
-const User = require("../model/User");
+const User = require('../model/User');
 
 async function get_cus_comidos(id, username) {
     const user =
-        await User.findOne({ uid: id }) ||
-        await User.create({ uid: id, name: username });
+        (await User.findOne({ uid: id })) ||
+        (await User.create({ uid: id, name: username }));
 
     if (user.cus_comidos.length === 0) {
         return 'você ainda não comeu o cu de ninguém';
@@ -15,8 +14,7 @@ async function get_cus_comidos(id, username) {
         {}
     );
 
-    const response = Object
-        .entries(cus_comidos)
+    const response = Object.entries(cus_comidos)
         .map(([username, times]) => `${username} ${times}x`)
         .join('\n');
 
@@ -25,14 +23,17 @@ async function get_cus_comidos(id, username) {
 
 module.exports = {
     run: async (client, message, args) => {
-        const response = await get_cus_comidos(message.author.id, message.author.username);
+        const response = await get_cus_comidos(
+            message.author.id,
+            message.author.username
+        );
 
         message.reply(response);
     },
     get command() {
         return {
             name: 'cus',
-            usage: 'cus'
-        }
-    }
-}
+            usage: 'cus',
+        };
+    },
+};
