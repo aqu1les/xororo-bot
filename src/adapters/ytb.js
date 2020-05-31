@@ -3,7 +3,7 @@ const ytpl = require('ytpl');
 
 module.exports = {
     search: async (keyword) => {
-        const response = await ytsr(keyword, { limit: 1 });
+        const response = await ytsr(keyword);
         const musics = response.items.filter((item) => item.type === 'video');
         return musics[0];
     },

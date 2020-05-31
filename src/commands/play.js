@@ -7,42 +7,48 @@ let author = {};
 let channelID = null;
 
 async function play(connection, message) {
-    const music = playlist.getFirstMusic(channelID);
+    try {
+        const music = playlist.getFirstMusic(channelID);
 
-    const clientResponse = createEmbed(
-        `Vo toca essa braba aqui`,
-        '#e80a21',
-        music.title,
-        music.link || music.url,
-        music.thumbnail,
-        {
-            text: author.username || 'aqu1les',
-            icon: author.avatarURL || 'https://i.imgur.com/FYaQiTu.jpg',
-        },
-        true
-    );
+        const clientResponse = createEmbed(
+            `Vo toca essa braba aqui`,
+            '#e80a21',
+            music.title,
+            music.link || music.url,
+            music.thumbnail,
+            {
+                text: author.username || 'aqu1les',
+                icon: author.avatarURL || 'https://i.imgur.com/FYaQiTu.jpg',
+            },
+            true
+        );
 
-    message.channel.send(clientResponse);
-    const playableData = await ytdl(music.link || music.url, {
-        filter: 'audio',
-    });
-    const dispatcher = connection.playStream(playableData);
-    dispatcher.setVolume(1);
+        message.channel.send(clientResponse);
+        const playableData = await ytdl(music.link || music.url, {
+            filter: 'audio',
+        });
+        const dispatcher = connection.playStream(playableData);
+        dispatcher.setVolume(1);
 
-    dispatcher.on('error', (e) => {
-        console.log(e);
-    });
+        dispatcher.on('error', (e) => {
+            console.log(e);
+        });
 
-    dispatcher.on('end', () => {
-        playlist.popMusic(channelID);
-        if (playlist.getPlaylistLength(channelID) === 0)
-            return connection.disconnect();
-        play(connection, message);
-    });
+        dispatcher.on('end', () => {
+            playlist.popMusic(channelID);
+            if (playlist.getPlaylistLength(channelID) === 0)
+                return connection.disconnect();
+            play(connection, message);
+        });
 
-    connection.on('disconnect', () => {
-        playlist.setPlaylist(channelID);
-    });
+        connection.on('disconnect', () => {
+            playlist.setPlaylist(channelID);
+        });
+    } catch (e) {
+        console.error(e);
+        message.channel.send(`Deu algum erro aqui viado`);
+        connection.disconnect();
+    }
 }
 
 async function handlePlaylist(playlistURL, serverID) {
