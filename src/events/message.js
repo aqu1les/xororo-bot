@@ -69,14 +69,10 @@ module.exports = async (client, message) => {
         return message.channel.send('Meu pau na sua mão');
     }
     if (
-        message.content.substr(
-            message.content.length - 5,
-            message.content.length - 1
-        ) === 'noite' ||
-        message.content.substr(
-            message.content.length - 5,
-            message.content.length - 1
-        ) === 'NOITE'
+        message.content
+            .toLowerCase()
+            .substr(message.content.length - 5, message.content.length - 1) ===
+        'noite'
     ) {
         return message.channel.send('Boa noite corno');
     }
