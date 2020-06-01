@@ -2,6 +2,7 @@ const ytdl = require('ytdl-core');
 const ytb = require('../adapters/ytb');
 const playlist = require('../features/playlist')();
 const createEmbed = require('../adapters/embed');
+const { millisToMinutes } = require('../adapters/utils');
 
 let author = {};
 let channelID = null;
@@ -65,6 +66,18 @@ async function handleYtbSearch(keywords, serverID) {
     return music;
 }
 
+async function handleYtbLink(URL, serverID) {
+    const ytb_music = await ytdl.getBasicInfo(URL);
+    const music = {
+        thumbnail: ytb_music.thumbnail_url,
+        link: URL,
+        title: ytb_music.title,
+        duration: millisToMinutes(ytb_music.length_seconds * 1000),
+    };
+    playlist.addMusic(music, serverID);
+    return music;
+}
+
 module.exports = {
     run: async (client, message, args) => {
         author = await client.fetchUser('246470177376567297');
@@ -81,7 +94,16 @@ module.exports = {
                         });
 
                     if (args.length === 1 && ytb.validateURL(args[0])) {
-                        await handlePlaylist(args[0], channelID);
+                        const totalMusics = await handlePlaylist(
+                            args[0],
+                            channelID
+                        );
+
+                        message.channel.send(
+                            `${totalMusics} músicas adicionadas à playlist.`
+                        );
+                    } else if (args.length === 1 && ytdl.validateURL(args[0])) {
+                        await handleYtbLink(args[0], channelID);
                     } else {
                         await handleYtbSearch(args.join(' '), channelID);
                     }
@@ -104,6 +126,8 @@ module.exports = {
                         }
 
                         return;
+                    } else if (args.length === 1 && ytdl.validateURL(args[0])) {
+                        await handleYtbLink(args[0], channelID);
                     } else {
                         const music = await handleYtbSearch(
                             args.join(' '),

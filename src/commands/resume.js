@@ -7,6 +7,7 @@ module.exports = {
             const dispatcher = message.guild.voiceConnection.player.dispatcher;
             if (dispatcher.paused) {
                 dispatcher.resume();
+                message.react('▶️');
             }
         }
     },
