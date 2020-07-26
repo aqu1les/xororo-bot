@@ -36,6 +36,7 @@
     "bufferutil": "^4.0.1",
     "discord.js": "^11.6.4",
     "enmap": "^4.8.7",
+    "erlpack": "discordapp/erlpack",
     "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.1",
     "libsodium-wrappers": "^0.7.6",
@@ -44,6 +45,7 @@
     "utf-8-validate": "^5.0.2",
     "ytdl-core": "^2.1.5",
     "ytpl": "^0.1.21",
-    "ytsr": "^0.1.14"
+    "ytsr": "^0.1.14",
+    "zlib-sync": "^0.1.7"
   }
 }
