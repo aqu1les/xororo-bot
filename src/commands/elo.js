@@ -1,15 +1,15 @@
 const axios = require('axios');
-const API_KEY = process.env.API_KEY;
+const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
 async function getElo(username) {
   try {
     const response = await axios.get(
-      `https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${API_KEY}`
+      `https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?RIOT_API_KEY=${RIOT_API_KEY}`
     );
     if (!response.data) return 'Usuario não existe!';
     const userId = response.data.id;
     const eloResponse = await axios.get(
-      `https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${userId}?api_key=${API_KEY}`
+      `https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${userId}?RIOT_API_KEY=${RIOT_API_KEY}`
     );
 
     let resp = [];

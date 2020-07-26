@@ -20,7 +20,7 @@ const init = async () => {
 
   mongoose
     .connect(
-      `mongodb+srv://aqu1les:${process.env.password}@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`,
+      `mongodb+srv://aqu1les:${process.env.DB_PASSWORD}@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -49,7 +49,7 @@ const init = async () => {
   });
 
   client.on('error', (err) => console.log(err));
-  client.login(process.env.secret);
+  client.login(process.env.DISCORD_SECRET);
 };
 
 init();
