@@ -1,39 +1,50 @@
 {
-    "name": "xororo-bot",
-    "version": "1.1.13",
-    "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.dev.js"
-    },
-    "repository": "https://github.com/aqu1les/xororo-bot",
-    "keywords": [
-        "discord",
-        "bot"
-    ],
-    "author": "aqu1les",
-    "license": "ISC",
-    "devDependencies": {
-        "dotenv": "^8.2.0",
-        "nodemon": "^1.19.4"
-    },
-    "dependencies": {
-        "@discordjs/opus": "^0.3.2",
-        "axios": "^0.19.2",
-        "bufferutil": "^4.0.1",
-        "discord.js": "^11.6.4",
-        "enmap": "^4.8.7",
-        "erlpack": "github:hammerandchisel/erlpack",
-        "ffmpeg": "0.0.4",
-        "fs-extra": "^7.0.1",
-        "libsodium-wrappers": "^0.7.6",
-        "mongoose": "^5.9.15",
-        "opusscript": "0.0.7",
-        "utf-8-validate": "^5.0.2",
-        "ytdl-core": "^2.1.5",
-        "ytpl": "^0.1.21",
-        "ytsr": "^0.1.14"
+  "name": "xororo-bot",
+  "version": "1.1.14",
+  "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.dev.js"
+  },
+  "repository": "https://github.com/aqu1les/xororo-bot",
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "aqu1les",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^1.19.4",
+    "prettier": "2.0.5"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "axios": "^0.19.2",
+    "bufferutil": "^4.0.1",
+    "discord.js": "^11.6.4",
+    "enmap": "^4.8.7",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "ffmpeg": "0.0.4",
+    "fs-extra": "^7.0.1",
+    "libsodium-wrappers": "^0.7.6",
+    "mongoose": "^5.9.15",
+    "opusscript": "0.0.7",
+    "utf-8-validate": "^5.0.2",
+    "ytdl-core": "^2.1.5",
+    "ytpl": "^0.1.21",
+    "ytsr": "^0.1.14"
+  }
 }

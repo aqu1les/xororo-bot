@@ -1,18 +1,24 @@
 const fs = require('fs-extra');
 
+async function getFormattedCommands() {
+  const cmds = await fs.readdir('src/commands');
+
+  const formattedCommands = cmds.reduce(
+    (acc, cmd) => [...acc, `!${cmd.split('.')[0]}`],
+    []
+  );
+
+  return formattedCommands;
+}
+
 module.exports = {
-    run: async (client, message, args) => {
-        const cmds = await fs.readdir('src/commands');
-        let resp = [];
-        cmds.map((cmd) => {
-            resp.push(`!${cmd.split('.')[0]}`);
-        });
-        message.author.send(resp);
-    },
-    get command() {
-        return {
-            name: 'comandos',
-            usage: 'comandos',
-        };
-    },
+  run: async (client, message, args) => {
+    message.author.send(await getFormattedCommands());
+  },
+  get command() {
+    return {
+      name: 'comandos',
+      usage: 'comandos'
+    };
+  }
 };
