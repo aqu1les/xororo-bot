@@ -21,7 +21,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "src/**/*": "prettier --write"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
@@ -36,7 +36,6 @@
     "bufferutil": "^4.0.1",
     "discord.js": "^11.6.4",
     "enmap": "^4.8.7",
-    "erlpack": "github:hammerandchisel/erlpack",
     "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.1",
     "libsodium-wrappers": "^0.7.6",
