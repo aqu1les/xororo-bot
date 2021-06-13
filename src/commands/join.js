@@ -1,24 +1,30 @@
+const Discord = require('discord.js');
+const {
+  memberIsOnVoiceChannel,
+  botIsConnected,
+  connectOnChannel
+} = require('../helpers/voice-connection');
+
 module.exports = {
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message} message
+   * @returns
+   */
   run: (client, message) => {
-    if (!message.guild.voiceConnection) {
-      message.member.voiceChannel.join().then((connection) => {
-        message.channel.send(`entrei fodase`);
-      });
-    } else {
-      if (
-        message.guild.voiceConnection.channel.name ==
-        message.member.voiceChannel.name
-      ) {
-        return message.channel.send(`Already connected to your channel !`);
-      } else {
-        message.member.voiceChannel.join().then((connection) => {
-          message.channel.send(
-            `Joined the VoiceChannel "${connection.channel.name}" !`
-          );
-        });
-      }
+    if (!memberIsOnVoiceChannel(message.member)) {
+      return message.channel.send(
+        `vo entrar aonde? tu n ta em nenhum canal de voz diabo`
+      );
     }
-    return;
+    const memberChannel = message.member.voice.channel;
+
+    if (!botIsConnected(message.guild)) {
+      return connectOnChannel(memberChannel, message.channel);
+    }
+
+    return message.channel.send('to ocupado, da licença');
   },
   get command() {
     return {

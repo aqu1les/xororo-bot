@@ -18,11 +18,11 @@ module.exports = {
       return message.reply(
         ' por favor marque a pessoa que você gostaria de comer o cu.'
       );
-    const chances = Math.round(Math.random() * 100);
-    if (chances === 100) {
+    const chances = getRandomInt(0, 101);
+    if (chances >= 100) {
       inc_cus(message.author.id, message.author.username, String(args[0]));
       return message.reply(
-        ` com ${chances}% de chances você comeu o cu de ${args}. Parabéns!`
+        ` com 100% de chances você comeu o cu de ${args}. Parabéns!`
       );
     }
     message.reply(` você tem ${chances}% de chances de comer o cu de ${args}.`);
@@ -34,3 +34,10 @@ module.exports = {
     };
   }
 };
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  return Math.floor(Math.random() * (max - min)) + min;
+}

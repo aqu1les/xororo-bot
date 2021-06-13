@@ -1,15 +1,23 @@
 const playlist = require('../features/playlist')();
 const { millisToMinutes } = require('../adapters/utils');
+const Discord = require('discord.js');
 
 module.exports = {
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message} message
+   * @returns
+   */
   run: (client, message) => {
-    if (!message.guild.voiceConnection)
+    if (!message.guild.voice || !message.guild.voice.connection) {
       return message.reply('a playlist ta vazia meu guerreiro');
-    let response;
-    let songs = [...playlist.getPlaylist(message.guild.id)];
-    let dispatcher = message.guild.voiceConnection.dispatcher;
+    }
 
-    response = `Música atual: ${songs[0].title} - ${millisToMinutes(
+    const songs = [...playlist.getPlaylist(message.guild.id)];
+    const dispatcher = message.guild.voice.connection.dispatcher;
+
+    let response = `Música atual: ${songs[0].title} - ${millisToMinutes(
       dispatcher.time
     )} / ${songs[0].duration}`;
     songs.shift();

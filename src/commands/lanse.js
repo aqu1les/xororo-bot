@@ -30,11 +30,14 @@ async function play(connection) {
 module.exports = {
   run: async (client, message, args) => {
     if (args.join(' ') == 'a braba') {
-      message.member.voiceChannel.join().then(async (connection) => {
+      message.member.voice.channel.join().then(async (connection) => {
         message.reply('lansando a braba fdp');
-        await play(connection);
+        await play(connection).catch(() => {
+          message.reply('deu pra lansar a braba não mano');
+        });
       });
     }
+
     const brabas = await inc_brabas(message.author.id, message.author.username);
     if (brabas === 1) return message.reply(`lansou a braba pela primeira vez!`);
     return message.channel.send(`Você lansou a braba ${brabas} vezes, fdp`);

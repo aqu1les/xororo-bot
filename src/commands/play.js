@@ -3,7 +3,11 @@ const ytb = require('../adapters/ytb');
 const playlist = require('../features/playlist')();
 const createEmbed = require('../adapters/embed');
 const { millisToMinutes } = require('../adapters/utils');
+const Discord = require('discord.js');
 
+/**
+ * @type {Discord.User}
+ */
 let author = {};
 let channelID = null;
 
@@ -19,7 +23,7 @@ async function play(connection, message) {
       music.thumbnail,
       {
         text: author.username || 'aqu1les',
-        icon: author.avatarURL || 'https://i.imgur.com/FYaQiTu.jpg'
+        icon: author.avatarURL() || 'https://i.imgur.com/FYaQiTu.jpg'
       },
       true
     );
@@ -79,14 +83,20 @@ async function handleYtbLink(URL, serverID) {
 }
 
 module.exports = {
+  /**
+   * @param {Discord.Client} client
+   * @param {Discord.Message} message
+   * @param {*} args
+   * @returns
+   */
   run: async (client, message, args) => {
-    author = await client.fetchUser('246470177376567297');
+    author = await client.users.fetch('246470177376567297');
     channelID = message.guild.id;
     try {
       if (args.length !== 0) {
         /* Se o bot não tiver no canal */
-        if (!message.guild.voiceConnection) {
-          const connection = await message.member.voiceChannel
+        if (!message.guild.voice) {
+          const connection = await message.member.voice.connection.channel
             .join()
             .catch((err) => {
               console.log(err);
@@ -138,12 +148,14 @@ module.exports = {
           }
         }
       } else {
-        if (!message.guild.voiceConnection)
+        if (!message.guild.voice || !message.guild.voice.connection) {
           return message.reply(
             'use !play <nome da musica> ou !play <link da musica no youtube> para tocar'
           );
-        if (message.guild.voiceConnection.player) {
-          message.guild.voiceConnection.player.dispatcher.resume();
+        }
+
+        if (message.guild.voice.connection.player) {
+          message.guild.voice.player.dispatcher.resume();
           message.react('▶️');
         }
       }

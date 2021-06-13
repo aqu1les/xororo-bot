@@ -33,7 +33,7 @@
     "@discordjs/opus": "^0.3.2",
     "axios": "^0.21.1",
     "bufferutil": "^4.0.1",
-    "discord.js": "^11.6.4",
+    "discord.js": "^12.5.3",
     "enmap": "^4.8.7",
     "erlpack": "discordapp/erlpack",
     "ffmpeg": "0.0.4",
