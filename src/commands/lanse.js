@@ -35,7 +35,7 @@ module.exports = {
       description: 'Te lansa uma braba',
       options: [
         {
-          name: 'a braba?',
+          name: 'braba',
           type: 'STRING',
           description: 'vai querer a braba?',
           required: false

@@ -8,8 +8,7 @@ module.exports = {
    * @param {string[]} args
    */
   run(client, event) {
-    event.channel.send('pong');
-    return;
+    return event.reply('pong');
   },
   get command() {
     return {

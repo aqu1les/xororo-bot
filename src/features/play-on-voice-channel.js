@@ -28,10 +28,14 @@ async function playOnVoiceConnection(connection, textChannel, guildId, author) {
       true
     );
 
-    textChannel.send(clientResponse);
+    textChannel.send({ embeds: [clientResponse] });
     const playableData = ytdl(music.link || music.url, {
       filter: 'audio'
     });
+
+    /**
+     * TODO: CREATE AUDIO PLAYER
+     */
     const dispatcher = connection.play(playableData);
     dispatcher.setVolume(1);
 
@@ -53,9 +57,10 @@ async function playOnVoiceConnection(connection, textChannel, guildId, author) {
       playlist.setPlaylist(guildId);
     });
   } catch (e) {
-    console.error(e);
-    textChannel.send(`Deu algum erro aqui viado`);
     connection.disconnect();
+    connection.destroy(true);
+    textChannel.send(`Deu algum erro aqui viado`);
+    console.error(e);
   }
 }
 

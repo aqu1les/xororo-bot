@@ -27,7 +27,7 @@ client.on('ready', () => {
   }));
 
   client.guilds.cache.each((guild) =>
-    guild.commands.set(commands).catch(() => void 0)
+    guild.commands.set(commands).catch((error) => console.log(error))
   );
 });
 

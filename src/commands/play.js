@@ -52,6 +52,10 @@ module.exports = {
       author = await client.users.fetch('246470177376567297');
     }
 
+    if ('deferReply' in event) {
+      await event.reply('to pensando aqui perai');
+    }
+
     handleArguments(args, event.channel, guildId)
       .then((music) => {
         if (!botIsConnected(guildId)) {
@@ -60,7 +64,12 @@ module.exports = {
             event.guild
           );
 
-          return playOnVoiceConnection(connection, event, guildId, author);
+          return playOnVoiceConnection(
+            connection,
+            event.channel,
+            guildId,
+            author
+          );
         }
 
         if (music) {
@@ -72,12 +81,21 @@ module.exports = {
             music.thumbnail
           );
 
-          return event.channel.send(clientResponse);
+          const fn =
+            'editReply' in event && event.deferred
+              ? event.editReply
+              : event.reply;
+
+          return fn(clientResponse);
         }
       })
       .catch((error) => {
+        const fn =
+          'editReply' in event && event.deferred
+            ? event.editReply
+            : event.reply;
         console.error(error);
-        return event.reply('foi mal viado, deu algum erro aqui');
+        return fn('foi mal viado, deu algum erro aqui');
       });
   },
   get command() {
