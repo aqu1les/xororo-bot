@@ -1,7 +1,8 @@
 const {
   getVoiceConnection,
   joinVoiceChannel,
-  VoiceConnection
+  VoiceConnection,
+  VoiceConnectionStatus
 } = require('@discordjs/voice');
 const Discord = require('discord.js');
 
@@ -17,7 +18,14 @@ const memberIsOnVoiceChannel = (member) => member.voice && member.voice.channel;
  * @param {Discord.Guild} guildId
  * @returns {boolean}
  */
-const botIsConnected = (guildId) => !!getVoiceConnection(guildId);
+const botIsConnected = (guildId) => {
+  const connection = getVoiceConnection(guildId);
+  if (!connection) {
+    return false;
+  }
+
+  return connection.state.status !== VoiceConnectionStatus.Disconnected;
+};
 
 /**
  *

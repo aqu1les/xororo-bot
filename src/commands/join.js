@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const {
   memberIsOnVoiceChannel,
   botIsConnected,
-  connectOnChannel
+  createVoiceConnection
 } = require('../helpers/voice-connection');
 
 module.exports = {
@@ -14,17 +14,17 @@ module.exports = {
    */
   run: (client, event) => {
     if (!memberIsOnVoiceChannel(event.member)) {
-      return event.channel.send(
+      return event.reply(
         `vo entrar aonde? tu n ta em nenhum canal de voz diabo`
       );
     }
-    const memberChannel = event.member.voice.channel;
 
-    if (!botIsConnected(event.guild)) {
-      return connectOnChannel(memberChannel, event.channel);
+    if (!botIsConnected(event.guildId)) {
+      event.reply('Entrando...');
+      return createVoiceConnection(event.member.voice.channel.id, event.guild);
     }
 
-    return event.channel.send('to ocupado, da licença');
+    return event.reply('to ocupado, da licença');
   },
   get command() {
     return {
