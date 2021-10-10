@@ -1,3 +1,4 @@
+const { getVoiceConnection } = require('@discordjs/voice');
 const Discord = require('discord.js');
 const {
   botIsConnected,
@@ -14,22 +15,27 @@ module.exports = {
    * @param {string[]} args
    */
   run: (client, event) => {
-    if (!botIsConnected(event.guild)) {
-      return event.channel.send(`sai tu`);
+    if (!botIsConnected(event.guild.id)) {
+      return event.reply(`sai tu`);
     }
 
     if (!memberIsOnVoiceChannel(event.member)) {
-      return event.channel.send(`se fude porra`);
+      return event.reply(`se fude porra`);
     }
 
-    if (!isSameChannel(event.guild.voice.channel, event.member.voice.channel)) {
-      return event.channel.send(
+    const connection = getVoiceConnection(event.guild.id);
+    const channelMock = { id: connection.joinConfig.channelId };
+
+    if (!isSameChannel(channelMock, event.member.voice.channel)) {
+      return event.reply(
         `tu nem ta nesse canal de voz amigão, me deixa em paz`
       );
     }
 
-    event.guild.voice.connection && event.guild.voice.connection.disconnect();
+    connection.disconnect();
     playlist.setPlaylist(event.guild.id);
+
+    return event.reply(`bejo`);
   },
   get command() {
     return {
