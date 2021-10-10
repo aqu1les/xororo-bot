@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const User = require('../model/User');
 
-async function inc_xesque(id, username) {
+async function incXesques(id, username) {
   const user =
     (await User.findOne({ uid: id })) ||
     (await User.create({ uid: id, name: username, xesques: 0 }));
@@ -18,7 +18,7 @@ module.exports = {
    * @param {string[]} args
    */
   run: async (client, event) => {
-    const xesques = await inc_xesque(event.member.id, event.member.username);
+    const xesques = await incXesques(event.member.id, event.member.username);
     if (xesques === 1) return event.reply(`xamou no xesque pela primeira vez!`);
     return event.channel.send(`Você xamou no xesque ${xesques} vezes !`);
   },

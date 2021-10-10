@@ -1,15 +1,4 @@
-const fs = require('fs-extra');
-
-async function getFormattedCommands() {
-  const cmds = await fs.readdir('src/commands');
-
-  const formattedCommands = cmds.reduce(
-    (acc, cmd) => [...acc, `!${cmd.split('.')[0]}`],
-    []
-  );
-
-  return formattedCommands;
-}
+const Discord = require('discord.js');
 
 module.exports = {
   /**
@@ -19,7 +8,12 @@ module.exports = {
    * @param {string[]} args
    */
   run: async (client, event, args) => {
-    event.member.send(await getFormattedCommands());
+    const commands = [...client.commands.keys()]
+      .map((key) => `!${key}`)
+      .join(' ');
+    const message = `Os comandos são: ${commands}`;
+
+    event.reply(message);
   },
   get command() {
     return {
