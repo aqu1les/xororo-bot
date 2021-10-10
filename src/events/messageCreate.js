@@ -1,10 +1,46 @@
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 
+/**
+ *
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @returns
+ */
+module.exports = async (client, message) => {
+  if (message.member.bot) return;
+
+  const msg = ['Q', 'q', 'que', 'que?', 'q?', 'QUE'];
+
+  msg.map((q) => {
+    if (message.content.toLowerCase() === q) {
+      message.channel.send('pau no seu cu :microphone: ');
+    }
+  });
+
+  const test = message.content.substr(
+    message.content.length - 2,
+    message.content.length - 1
+  );
+  if (test === 'ão' && message.member.username !== client.user.username) {
+    return message.channel.send('Meu pau na sua mão');
+  }
+  if (
+    message.content
+      .toLowerCase()
+      .substr(message.content.length - 5, message.content.length - 1) ===
+    'noite'
+  ) {
+    return message.channel.send('Boa noite corno');
+  }
+  await Promise.all([runCommand(client, message)]);
+};
+
 const commandPrefix = '!';
 const commandPrefix2 = '/';
 const textIsCommand = (text) =>
   text.startsWith(commandPrefix) || text.startsWith(commandPrefix2);
+
 /**
  *
  * @param {Discord.Client} client
@@ -27,7 +63,7 @@ const runCommand = async (client, message) => {
   let date = new Date(Date.now());
   date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-  const logmsg = `[#LOG]: ${date} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
+  const logmsg = `[#LOG]: ${date} - ${message.member.username} (${message.member.id}) executou o comando: ${cmd.command.name}`;
   const name = date + '-log';
 
   if (!fs.existsSync(`src/logs`)) {
@@ -57,33 +93,4 @@ const runCommand = async (client, message) => {
       await cmd.after(client, message, args);
     }
   }
-};
-
-module.exports = async (client, message) => {
-  if (message.author.bot) return;
-
-  const msg = ['Q', 'q', 'que', 'que?', 'q?', 'QUE'];
-
-  msg.map((q) => {
-    if (message.content.toLowerCase() === q) {
-      message.channel.send('pau no seu cu :microphone: ');
-    }
-  });
-
-  const test = message.content.substr(
-    message.content.length - 2,
-    message.content.length - 1
-  );
-  if (test === 'ão' && message.author.username !== client.user.username) {
-    return message.channel.send('Meu pau na sua mão');
-  }
-  if (
-    message.content
-      .toLowerCase()
-      .substr(message.content.length - 5, message.content.length - 1) ===
-    'noite'
-  ) {
-    return message.channel.send('Boa noite corno');
-  }
-  await Promise.all([runCommand(client, message)]);
 };

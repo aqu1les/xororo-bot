@@ -60,7 +60,7 @@ module.exports = {
             event.guild
           );
 
-          return playOnVoiceConnection(connection, event, guildId);
+          return playOnVoiceConnection(connection, event, guildId, author);
         }
 
         if (music) {

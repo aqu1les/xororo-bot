@@ -9,8 +9,9 @@ const { VoiceConnection } = require('@discordjs/voice');
  * @param {VoiceConnection} connection
  * @param {Discord.TextBasedChannels} textChannel
  * @param {string} guildId
+ * @param {Discord.User} author
  */
-async function playOnVoiceConnection(connection, textChannel, guildId) {
+async function playOnVoiceConnection(connection, textChannel, guildId, author) {
   try {
     const music = playlist.getFirstMusic(guildId);
 
@@ -21,8 +22,8 @@ async function playOnVoiceConnection(connection, textChannel, guildId) {
       music.link || music.url,
       music.thumbnail,
       {
-        text: author.username || 'aqu1les',
-        icon: author.avatarURL() || 'https://i.imgur.com/FYaQiTu.jpg'
+        text: author?.username || 'aqu1les',
+        icon: author?.avatarURL() || 'https://i.imgur.com/FYaQiTu.jpg'
       },
       true
     );

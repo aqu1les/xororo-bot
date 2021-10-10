@@ -45,7 +45,7 @@ module.exports = {
       });
     }
 
-    const brabas = await inc_brabas(event.author.id, event.author.username);
+    const brabas = await inc_brabas(event.member.id, event.member.username);
     if (brabas === 1) return event.reply(`lansou a braba pela primeira vez!`);
     return event.channel.send(`Você lansou a braba ${brabas} vezes, fdp`);
   },
