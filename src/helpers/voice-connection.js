@@ -1,3 +1,8 @@
+const {
+  getVoiceConnection,
+  joinVoiceChannel,
+  VoiceConnection
+} = require('@discordjs/voice');
 const Discord = require('discord.js');
 
 /**
@@ -9,18 +14,18 @@ const memberIsOnVoiceChannel = (member) => member.voice && member.voice.channel;
 
 /**
  *
- * @param {Discord.Guild} guild
+ * @param {Discord.Guild} guildId
  * @returns {boolean}
  */
-const botIsConnected = (guild) => guild.voice && guild.voice.channel;
+const botIsConnected = (guildId) => !!getVoiceConnection(guildId);
 
 /**
  *
- * @param {Discord.Channel} channel1
- * @param {Discord.Channel} channel2
+ * @param {Discord.Channel} channelA
+ * @param {Discord.Channel} channelB
  * @returns {boolean}
  */
-const isSameChannel = (channel1, channel2) => channel1.id && channel2.id;
+const isSameChannel = (channelA, channelB) => channelA.id && channelB.id;
 
 /**
  *
@@ -40,9 +45,25 @@ const connectOnChannel = async (
   return await textChannel.send(message);
 };
 
+/**
+ *
+ * @param {string} channelId
+ * @param {Discord.Guild} guild
+ *
+ * @returns {VoiceConnection}
+ */
+const createVoiceConnection = (channelId, guild) => {
+  return joinVoiceChannel({
+    channelId,
+    guildId: guild.id,
+    adapterCreator: guild.voiceAdapterCreator
+  });
+};
+
 module.exports = {
   botIsConnected,
   memberIsOnVoiceChannel,
   connectOnChannel,
-  isSameChannel
+  isSameChannel,
+  createVoiceConnection
 };

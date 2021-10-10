@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const User = require('../model/User');
 
 async function inc_xesque(id, username) {
@@ -10,19 +11,22 @@ async function inc_xesque(id, username) {
 }
 
 module.exports = {
-  run: async (client, message) => {
-    const xesques = await inc_xesque(
-      message.author.id,
-      message.author.username
-    );
-    if (xesques === 1)
-      return message.reply(`xamou no xesque pela primeira vez!`);
-    return message.channel.send(`Você xamou no xesque ${xesques} vezes !`);
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: async (client, event) => {
+    const xesques = await inc_xesque(event.member.id, event.member.username);
+    if (xesques === 1) return event.reply(`xamou no xesque pela primeira vez!`);
+    return event.channel.send(`Você xamou no xesque ${xesques} vezes !`);
   },
   get command() {
     return {
       name: 'xama',
-      usage: 'xama'
+      usage: 'xama',
+      description: 'XAAAAAAAAAAAAAAAAAMA'
     };
   }
 };

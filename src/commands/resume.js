@@ -4,27 +4,28 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (!message.guild.voice || !message.guild.voice.connection) {
-      return message.reply('There is nothing to resume :)');
+  run: (client, event) => {
+    if (!event.guild.voice || !event.guild.voice.connection) {
+      return event.reply('There is nothing to resume :)');
     }
 
-    const connection = message.guild.voice.connection;
+    const connection = event.guild.voice.connection;
     if (connection.player) {
       const dispatcher = connection.dispatcher;
       if (dispatcher.paused) {
         dispatcher.resume();
-        message.react('▶️');
+        event.react('▶️');
       }
     }
   },
   get command() {
     return {
       name: 'resume',
-      usage: 'resume'
+      usage: 'resume',
+      description: 'Da play na musica pausada'
     };
   }
 };

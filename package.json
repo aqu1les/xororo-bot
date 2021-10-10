@@ -3,6 +3,9 @@
   "version": "1.1.15",
   "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
   "main": "src/index.js",
+  "engines": {
+    "node": "^16.6.0"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.dev.js"
@@ -23,28 +26,32 @@
     "src/**/*": "prettier --write"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "nodemon": "^1.19.4",
-    "prettier": "2.0.5"
+    "lint-staged": "^11.2.2",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "axios": "^0.21.1",
-    "bufferutil": "^4.0.1",
-    "discord.js": "^12.5.3",
-    "enmap": "^4.8.7",
-    "erlpack": "discordapp/erlpack",
-    "ffmpeg": "0.0.4",
+    "@discordjs/opus": "^0.5.3",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@discordjs/voice": "^0.6.0",
+    "axios": "^0.21.2",
+    "bufferutil": "^4.0.4",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.2.0",
+    "enmap": "^5.8.7",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.4.0",
     "fs-extra": "^7.0.1",
-    "libsodium-wrappers": "^0.7.6",
+    "libsodium": "^0.7.9",
+    "libsodium-wrappers": "^0.7.9",
     "mongoose": "^5.9.15",
-    "opusscript": "0.0.7",
-    "utf-8-validate": "^5.0.2",
-    "ytdl-core": "^2.1.5",
-    "ytpl": "^0.1.21",
-    "ytsr": "^0.1.14",
-    "zlib-sync": "^0.1.7"
+    "opusscript": "^0.0.8",
+    "tweetnacl": "^1.0.3",
+    "utf-8-validate": "^5.0.6",
+    "ytdl-core": "^4.8.2",
+    "ytpl": "^2.2.1",
+    "ytsr": "^3.5.0"
   }
 }

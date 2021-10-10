@@ -1,24 +1,24 @@
+const Discord = require('discord.js');
 const playlist = require('../features/playlist')();
 const { millisToMinutes } = require('../adapters/utils');
-const Discord = require('discord.js');
 
 module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (!message.guild.voice || !message.guild.voice.connection) {
-      return message.reply('a playlist ta vazia meu guerreiro');
+  run: (client, event) => {
+    if (!event.guild.voice || !event.guild.voice.connection) {
+      return event.reply('a playlist ta vazia meu guerreiro');
     }
 
-    const songs = [...playlist.getPlaylist(message.guild.id)];
-    const dispatcher = message.guild.voice.connection.dispatcher;
+    const songs = [...playlist.getPlaylist(event.guild.id)];
+    const dispatcher = event.guild.voice.connection.dispatcher;
 
     let response = `Música atual: ${songs[0].title} - ${millisToMinutes(
-      dispatcher.time
+      dispatcher.streamTime
     )} / ${songs[0].duration}`;
     songs.shift();
 
@@ -26,12 +26,13 @@ module.exports = {
       (song, index) =>
         (response += `\n${index + 1} - ${song.title} - 0:00 / ${song.duration}`)
     );
-    return message.channel.send(response);
+    return event.channel.send(response);
   },
   get command() {
     return {
       name: 'queue',
-      usage: 'queue'
+      usage: 'queue',
+      description: 'Mostra a playlist atual'
     };
   }
 };

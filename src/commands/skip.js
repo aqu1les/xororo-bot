@@ -4,24 +4,25 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (message.guild.voice && message.guild.voice.connection) {
-      const connection = message.guild.voice.connection;
+  run: (client, event) => {
+    if (event.guild.voice && event.guild.voice.connection) {
+      const connection = event.guild.voice.connection;
 
       if (connection && connection.dispatcher) {
         return connection.player.dispatcher.end();
       }
     }
 
-    return message.channel.send('como que skipa se n ta tocando nada desgraça');
+    return event.channel.send('como que skipa se n ta tocando nada desgraça');
   },
   get command() {
     return {
       name: 'skip',
-      usage: 'skip'
+      usage: 'skip',
+      description: 'Pula a musica que tá tocando'
     };
   }
 };

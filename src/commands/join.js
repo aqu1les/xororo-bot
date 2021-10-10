@@ -9,27 +9,28 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (!memberIsOnVoiceChannel(message.member)) {
-      return message.channel.send(
+  run: (client, event) => {
+    if (!memberIsOnVoiceChannel(event.member)) {
+      return event.channel.send(
         `vo entrar aonde? tu n ta em nenhum canal de voz diabo`
       );
     }
-    const memberChannel = message.member.voice.channel;
+    const memberChannel = event.member.voice.channel;
 
-    if (!botIsConnected(message.guild)) {
-      return connectOnChannel(memberChannel, message.channel);
+    if (!botIsConnected(event.guild)) {
+      return connectOnChannel(memberChannel, event.channel);
     }
 
-    return message.channel.send('to ocupado, da licença');
+    return event.channel.send('to ocupado, da licença');
   },
   get command() {
     return {
       name: 'join',
-      usage: 'join'
+      usage: 'join',
+      description: 'Entra no seu canal de voz'
     };
   }
 };

@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const User = require('../model/User');
 const ytdl = require('ytdl-core');
 
@@ -28,24 +29,31 @@ async function play(connection) {
 }
 
 module.exports = {
-  run: async (client, message, args) => {
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: async (client, event, args) => {
     if (args.join(' ') == 'a braba') {
-      message.member.voice.channel.join().then(async (connection) => {
-        message.reply('lansando a braba fdp');
+      event.member.voice.channel.join().then(async (connection) => {
+        event.reply('lansando a braba fdp');
         await play(connection).catch(() => {
-          message.reply('deu pra lansar a braba não mano');
+          event.reply('deu pra lansar a braba não mano');
         });
       });
     }
 
-    const brabas = await inc_brabas(message.author.id, message.author.username);
-    if (brabas === 1) return message.reply(`lansou a braba pela primeira vez!`);
-    return message.channel.send(`Você lansou a braba ${brabas} vezes, fdp`);
+    const brabas = await inc_brabas(event.author.id, event.author.username);
+    if (brabas === 1) return event.reply(`lansou a braba pela primeira vez!`);
+    return event.channel.send(`Você lansou a braba ${brabas} vezes, fdp`);
   },
   get command() {
     return {
       name: 'lanse',
-      usage: 'lanse'
+      usage: 'lanse',
+      description: 'Te lansa uma braba'
     };
   }
 };

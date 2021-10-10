@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 function createEmbed(
   title,
@@ -9,7 +9,7 @@ function createEmbed(
   footer = null,
   timestamp = null
 ) {
-  const embed = new RichEmbed()
+  const embed = new MessageEmbed()
     .setTitle(title)
     .setColor(color)
     .setDescription(description);

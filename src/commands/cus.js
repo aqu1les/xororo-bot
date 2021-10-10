@@ -1,6 +1,7 @@
+const Discord = require('discord.js');
 const User = require('../model/User');
 
-async function get_cus_comidos(id, username) {
+async function getCusComidos(id, username) {
   const user =
     (await User.findOne({ uid: id })) ||
     (await User.create({ uid: id, name: username }));
@@ -22,18 +23,26 @@ async function get_cus_comidos(id, username) {
 }
 
 module.exports = {
-  run: async (client, message, args) => {
-    const response = await get_cus_comidos(
-      message.author.id,
-      message.author.username
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: async (client, event, args) => {
+    const response = await getCusComidos(
+      event.member.id,
+      event.member.username
     );
 
-    message.reply(response);
+    event.reply(response);
   },
   get command() {
     return {
       name: 'cus',
-      usage: 'cus'
+      usage: 'cus',
+      description: 'Lista quantos cus você já comeu',
+      options: []
     };
   }
 };

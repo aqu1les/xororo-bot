@@ -4,25 +4,26 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (message.guild.voice && message.guild.voice.connection) {
-      const { connection } = message.guild.voice;
+  run: (client, event) => {
+    if (event.guild.voice && event.guild.voice.connection) {
+      const { connection } = event.guild.voice;
 
       if (connection && connection.dispatcher) {
-        message.channel.send('blz, fui de beise');
-        return message.guild.voice.disconnect();
+        event.channel.send('blz, fui de beise');
+        return event.guild.voice.disconnect();
       }
     }
 
-    return message.channel.send('tem nada pra parar porra');
+    return event.channel.send('tem nada pra parar porra');
   },
   get command() {
     return {
       name: 'stop',
-      usage: 'stop'
+      usage: 'stop',
+      description: 'Para de tocar e vaza do canal de voz'
     };
   }
 };

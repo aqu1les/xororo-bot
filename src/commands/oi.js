@@ -1,12 +1,21 @@
+const Discord = require('discord.js');
+
 module.exports = {
-  run: (client, message) => {
-    message.author.send('EAI CARAIO');
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: (client, event) => {
+    event.member.send('EAI CARAIO');
     return;
   },
   get command() {
     return {
       name: 'oi',
-      usage: 'oi'
+      usage: 'oi',
+      description: 'Salve?'
     };
   }
 };

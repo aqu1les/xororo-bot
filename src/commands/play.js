@@ -1,75 +1,53 @@
 const ytdl = require('ytdl-core');
+const ytsr = require('ytsr');
+const Discord = require('discord.js');
+
 const ytb = require('../adapters/ytb');
 const playlist = require('../features/playlist')();
 const createEmbed = require('../adapters/embed');
 const { millisToMinutes } = require('../adapters/utils');
-const Discord = require('discord.js');
+const {
+  memberIsOnVoiceChannel,
+  botIsConnected,
+  createVoiceConnection
+} = require('../helpers/voice-connection');
+const { playOnVoiceConnection } = require('../features/play-on-voice-channel');
 
 /**
  * @type {Discord.User}
  */
-let author = {};
-let channelID = null;
+let author = null;
 
-async function play(connection, message) {
-  try {
-    const music = playlist.getFirstMusic(channelID);
-
-    const clientResponse = createEmbed(
-      `Vo toca essa braba aqui`,
-      '#e80a21',
-      music.title,
-      music.link || music.url,
-      music.thumbnail,
-      {
-        text: author.username || 'aqu1les',
-        icon: author.avatarURL() || 'https://i.imgur.com/FYaQiTu.jpg'
-      },
-      true
-    );
-
-    message.channel.send(clientResponse);
-    const playableData = await ytdl(music.link || music.url, {
-      filter: 'audio'
-    });
-    const dispatcher = connection.playStream(playableData);
-    dispatcher.setVolume(1);
-
-    dispatcher.on('error', (e) => {
-      console.log(e);
-    });
-
-    dispatcher.on('end', () => {
-      playlist.popMusic(channelID);
-      if (playlist.getPlaylistLength(channelID) === 0)
-        return connection.disconnect();
-      play(connection, message);
-    });
-
-    connection.on('disconnect', () => {
-      playlist.setPlaylist(channelID);
-    });
-  } catch (e) {
-    console.error(e);
-    message.channel.send(`Deu algum erro aqui viado`);
-    connection.disconnect();
-  }
-}
-
+/**
+ *
+ * @param {string} playlistURL
+ * @param {string} serverID
+ * @returns {Promise<number>} playlist length
+ */
 async function handlePlaylist(playlistURL, serverID) {
-  const musics = await ytb.fetchPlaylist(playlistURL);
-  musics.map((music) => {
-    playlist.addMusic(music, serverID);
-  });
-  return musics.length;
+  return await ytb
+    .fetchPlaylist(playlistURL)
+    .map((music) => playlist.addMusic(music, serverID)).length;
 }
 
+/**
+ *
+ * @param {string} keywords
+ * @param {string} serverID
+ * @returns {Promise<ytsr.Video>} music found
+ */
 async function handleYtbSearch(keywords, serverID) {
   const music = await ytb.search(keywords);
   playlist.addMusic(music, serverID);
   return music;
 }
 
+/**
+ *
+ * @param {string} URL
+ * @param {string} serverID
+ * @returns {Promise<any>}
+ */
 async function handleYtbLink(URL, serverID) {
   const ytb_music = await ytdl.getBasicInfo(URL);
   const music = {
@@ -84,90 +62,96 @@ async function handleYtbLink(URL, serverID) {
 
 module.exports = {
   /**
+   *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @param {*} args
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: async (client, message, args) => {
-    author = await client.users.fetch('246470177376567297');
-    channelID = message.guild.id;
-    try {
-      if (args.length !== 0) {
-        /* Se o bot não tiver no canal */
-        if (!message.guild.voice) {
-          const connection = await message.member.voice.connection.channel
-            .join()
-            .catch((err) => {
-              console.log(err);
-              return message.reply('não dá pra entrar ai viado');
-            });
+  run: async (client, event, args) => {
+    const guildId = event.guild.id;
 
-          if (args.length === 1 && ytb.validateURL(args[0])) {
-            const totalMusics = await handlePlaylist(args[0], channelID);
-
-            message.channel.send(
-              `${totalMusics} músicas adicionadas à playlist.`
-            );
-          } else if (args.length === 1 && ytdl.validateURL(args[0])) {
-            await handleYtbLink(args[0], channelID);
-          } else {
-            await handleYtbSearch(args.join(' '), channelID);
-          }
-
-          play(connection, message);
-        } else {
-          if (args.length === 1 && ytb.validateURL(args[0])) {
-            try {
-              const totalMusics = await handlePlaylist(args[0], channelID);
-              message.channel.send(
-                `${totalMusics} músicas adicionadas à playlist.`
-              );
-            } catch (e) {
-              message.channel.send(
-                'deu erro adicionando as musicas da playlist parsero'
-              );
-            }
-
-            return;
-          } else if (args.length === 1 && ytdl.validateURL(args[0])) {
-            await handleYtbLink(args[0], channelID);
-          } else {
-            const music = await handleYtbSearch(args.join(' '), channelID);
-
-            const clientResponse = createEmbed(
-              `Música adicionada à playlist`,
-              '#e80a21',
-              music.title,
-              music.link || music.url,
-              music.thumbnail
-            );
-
-            message.channel.send(clientResponse);
-            return;
-          }
-        }
-      } else {
-        if (!message.guild.voice || !message.guild.voice.connection) {
-          return message.reply(
-            'use !play <nome da musica> ou !play <link da musica no youtube> para tocar'
-          );
-        }
-
-        if (message.guild.voice.connection.player) {
-          message.guild.voice.player.dispatcher.resume();
-          message.react('▶️');
-        }
+    if (args.length === 0) {
+      if (!botIsConnected(guildId)) {
+        return event.reply(
+          'use !play <nome da musica> ou !play <link da musica no youtube> para tocar'
+        );
       }
-    } catch (e) {
-      console.error(e);
-      return message.reply('foi mal viado, deu algum erro aqui');
+
+      /** GET SUBSCRIPTION TO PAUSE */
+      // if (event.guild.voice.connection.player) {
+      //   event.guild.voice.player.dispatcher.resume();
+      //   return event.react('▶️');
+      // }
+      return;
     }
+
+    if (!memberIsOnVoiceChannel(event.member)) {
+      event.reply('vai pra um canal de voz primeiro corno');
+      return;
+    }
+
+    if (!author) {
+      author = await client.users.fetch('246470177376567297');
+    }
+
+    handleArguments(args, event.channel, guildId)
+      .then((music) => {
+        if (!botIsConnected(guildId)) {
+          const connection = createVoiceConnection(
+            event.member.voice.channel.id,
+            event.guild
+          );
+
+          return playOnVoiceConnection(connection, event, guildId);
+        }
+
+        if (music) {
+          const clientResponse = createEmbed(
+            `Música adicionada à playlist`,
+            '#e80a21',
+            music.title,
+            music.link || music.url,
+            music.thumbnail
+          );
+
+          return event.channel.send(clientResponse);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        return event.reply('foi mal viado, deu algum erro aqui');
+      });
   },
   get command() {
     return {
       name: 'play',
-      usage: 'play'
+      usage: 'play',
+      description: 'Toca musica né irmão'
     };
   }
 };
+
+/**
+ *
+ * @param {string[]} args
+ * @param {Discord.TextBasedChannelFields} channel
+ * @param {string} guildId
+ * @returns {Promise<ytsr.Video | undefined>}
+ */
+async function handleArguments(args, channel, guildId) {
+  if (args.length === 1 && ytb.validateURL(args[0])) {
+    try {
+      const totalMusics = await handlePlaylist(ytb.validateURL(url), guildId);
+
+      channel.send(`${totalMusics} músicas adicionadas à playlist.`);
+    } catch (e) {
+      channel.send('deu erro adicionando as musicas da playlist parsero');
+    }
+  } else if (args.length === 1 && ytdl.validateURL(args[0])) {
+    await handleYtbLink(args[0], guildId);
+  } else {
+    return await handleYtbSearch(args.join(' '), guildId);
+  }
+
+  return;
+}

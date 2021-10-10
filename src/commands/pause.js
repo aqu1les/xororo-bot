@@ -4,28 +4,29 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (!message.guild.voice || !message.guild.voice.connection) {
-      return message.reply('tem nada pra pausar carai');
+  run: (client, event) => {
+    if (!event.guild.voice || !event.guild.voice.connection) {
+      return event.reply('tem nada pra pausar carai');
     }
 
-    const dispatcher = message.guild.voice.connection.dispatcher;
+    const dispatcher = event.guild.voice.connection.dispatcher;
     if (dispatcher) {
       if (dispatcher.paused) {
         dispatcher.resume();
-        message.react('▶️');
+        event.react('▶️');
       }
       dispatcher.pause();
-      message.react('⏸️');
+      event.react('⏸️');
     }
   },
   get command() {
     return {
       name: 'pause',
-      usage: 'pause'
+      usage: 'pause',
+      description: 'Pausa a música que está tocando'
     };
   }
 };

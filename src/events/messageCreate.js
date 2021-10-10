@@ -1,30 +1,39 @@
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 
+const commandPrefix = '!';
+const commandPrefix2 = '/';
+const textIsCommand = (text) =>
+  text.startsWith(commandPrefix) || text.startsWith(commandPrefix2);
+/**
+ *
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @returns
+ */
 const runCommand = async (client, message) => {
-  const commandPrefix = '!';
-
-  const isCommand = message.content.startsWith(commandPrefix) ? true : false;
-
+  const isCommand = textIsCommand(message.content);
   if (!isCommand) return;
 
   const msg = message.content;
 
-  const args = msg.slice(commandPrefix).trim().split(' ');
+  const args = msg.slice(1).trim().split(' ');
   args.shift();
+
   const command = msg.substring(1, msg.length).split(' ')[0];
-
   const cmd = client.commands.get(command);
-
   if (!cmd) return;
 
   let date = new Date(Date.now());
   date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
   const logmsg = `[#LOG]: ${date} - ${message.author.username} (${message.author.id}) executou o comando: ${cmd.command.name}`;
   const name = date + '-log';
+
   if (!fs.existsSync(`src/logs`)) {
     fs.mkdirSync(`src/logs`);
   }
+
   fs.appendFile(
     `src/logs/${name}.txt`,
     `${logmsg} ${args.join(' ') || ''} \n`,

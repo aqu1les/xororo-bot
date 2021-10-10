@@ -10,33 +10,32 @@ module.exports = {
   /**
    *
    * @param {Discord.Client} client
-   * @param {Discord.Message} message
-   * @returns
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
    */
-  run: (client, message) => {
-    if (!botIsConnected(message.guild)) {
-      return message.channel.send(`sai tu`);
+  run: (client, event) => {
+    if (!botIsConnected(event.guild)) {
+      return event.channel.send(`sai tu`);
     }
 
-    if (!memberIsOnVoiceChannel(message.member)) {
-      return message.channel.send(`se fude porra`);
+    if (!memberIsOnVoiceChannel(event.member)) {
+      return event.channel.send(`se fude porra`);
     }
 
-    if (
-      !isSameChannel(message.guild.voice.channel, message.member.voice.channel)
-    ) {
-      return message.channel.send(
+    if (!isSameChannel(event.guild.voice.channel, event.member.voice.channel)) {
+      return event.channel.send(
         `tu nem ta nesse canal de voz amigão, me deixa em paz`
       );
     }
 
-    message.guild.voice.connection.disconnect();
-    playlist.setPlaylist(message.guild.id);
+    event.guild.voice.connection && event.guild.voice.connection.disconnect();
+    playlist.setPlaylist(event.guild.id);
   },
   get command() {
     return {
       name: 'leave',
-      usage: 'leave'
+      usage: 'leave',
+      description: 'Sai do seu canal de voz'
     };
   }
 };

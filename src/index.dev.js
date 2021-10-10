@@ -1,19 +1,37 @@
 const Discord = require('discord.js');
 const fs = require('fs-extra');
-const Enmap = require('enmap');
 const mongoose = require('mongoose');
 require('dotenv/config');
 
-const client = new Discord.Client({ forceFetchUser: true });
+const client = new Discord.Client({
+  forceFetchUser: true,
+  intents: [
+    Discord.Intents.FLAGS.GUILDS,
+    Discord.Intents.FLAGS.GUILD_MESSAGES,
+    Discord.Intents.FLAGS.GUILD_VOICE_STATES
+  ]
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user
-    .setActivity('meu dono fazer merda no meu código', { type: 'WATCHING' })
-    .catch(console.error);
+
+  client.user.setActivity('meu dono fazer merda no meu código', {
+    type: 'WATCHING'
+  });
+
+  /** @var {Discord.ApplicationCommandDataResolvable[]} */
+  const commands = [...client.commands.entries()].map(([key, props]) => ({
+    name: key,
+    description: props.command.description,
+    options: props.command.options
+  }));
+
+  client.guilds.cache.each((guild) =>
+    guild.commands.set(commands).catch(() => void 0)
+  );
 });
 
-client.commands = new Enmap();
+client.commands = new Map();
 
 const init = async () => {
   const cmds = await fs.readdir('src/commands');

@@ -12,13 +12,20 @@ async function getFormattedCommands() {
 }
 
 module.exports = {
-  run: async (client, message, args) => {
-    message.author.send(await getFormattedCommands());
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: async (client, event, args) => {
+    event.member.send(await getFormattedCommands());
   },
   get command() {
     return {
       name: 'comandos',
-      usage: 'comandos'
+      usage: 'comandos',
+      description: 'Lista todos os comandos do bot'
     };
   }
 };

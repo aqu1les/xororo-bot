@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const axios = require('axios');
 const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
@@ -38,15 +39,22 @@ async function getElo(username) {
 }
 
 module.exports = {
-  run: async (client, message, args) => {
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   */
+  run: async (client, event, args) => {
     const username = String(args.join(''));
     const response = await getElo(username);
-    message.reply(`${response}`);
+    event.reply(`${response}`);
   },
   get command() {
     return {
       name: 'elo',
-      usage: 'elo'
+      usage: 'elo',
+      description: 'Retorna o seu elo no lolzito'
     };
   }
 };

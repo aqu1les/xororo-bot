@@ -1,4 +1,5 @@
 const User = require('../model/User');
+const Discord = require('discord.js');
 
 async function inc_cus(id, username, target_id) {
   const user = await User.findOne({ uid: id });
@@ -11,26 +12,48 @@ async function inc_cus(id, username, target_id) {
 }
 
 module.exports = {
-  run: async (client, message, args) => {
-    if (Array(args).length == 0)
-      return message.reply(' marque a pessoa que você gostaria de comer o cu.');
-    if (String(args[0]).substring(0, 2) !== '<@')
-      return message.reply(
+  /**
+   *
+   * @param {Discord.Client} client
+   * @param {Discord.Message | Discord.CommandInteraction} event
+   * @param {string[]} args
+   * @returns
+   */
+  run: async (client, event, args) => {
+    if (args.length == 0) {
+      return event.reply(' marque a pessoa que você gostaria de comer o cu.');
+    }
+
+    if (args[0].substring(0, 2) !== '<@') {
+      return event.reply(
         ' por favor marque a pessoa que você gostaria de comer o cu.'
       );
-    const chances = getRandomInt(0, 101);
-    if (chances >= 100) {
-      inc_cus(message.author.id, message.author.username, String(args[0]));
-      return message.reply(
-        ` com 100% de chances você comeu o cu de ${args}. Parabéns!`
-      );
     }
-    message.reply(` você tem ${chances}% de chances de comer o cu de ${args}.`);
+
+    const chances = getRandomInt(0, 101);
+    let response = ` você tem ${chances}% de chances de comer o cu de ${args}.`;
+
+    if (chances >= 100) {
+      inc_cus(event.member.id, event.member.username, String(args[0]));
+      response = ` com 100% de chances você comeu o cu de ${args}. Parabéns!`;
+    }
+
+    event.reply(response);
   },
   get command() {
     return {
       name: 'cu',
-      usage: 'cu'
+      usage: 'cu',
+      description:
+        'Calcula a porcentagem de chances que você tem de comer o cu de alguém',
+      options: [
+        {
+          name: 'alvo',
+          type: 'STRING',
+          description: 'A pessoa que você gostaria de comer',
+          required: true
+        }
+      ]
     };
   }
 };
