@@ -15,7 +15,8 @@ module.exports = {
     return {
       name: 'oi',
       usage: 'oi',
-      description: 'Salve?'
+      description: 'Salve?',
+      options: []
     };
   }
 };

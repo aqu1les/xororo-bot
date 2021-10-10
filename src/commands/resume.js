@@ -25,7 +25,8 @@ module.exports = {
     return {
       name: 'resume',
       usage: 'resume',
-      description: 'Da play na musica pausada'
+      description: 'Da play na musica pausada',
+      options: []
     };
   }
 };

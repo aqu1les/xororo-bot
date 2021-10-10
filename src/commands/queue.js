@@ -32,7 +32,8 @@ module.exports = {
     return {
       name: 'queue',
       usage: 'queue',
-      description: 'Mostra a playlist atual'
+      description: 'Mostra a playlist atual',
+      options: []
     };
   }
 };

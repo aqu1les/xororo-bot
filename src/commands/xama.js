@@ -26,7 +26,8 @@ module.exports = {
     return {
       name: 'xama',
       usage: 'xama',
-      description: 'XAAAAAAAAAAAAAAAAAMA'
+      description: 'XAAAAAAAAAAAAAAAAAMA',
+      options: []
     };
   }
 };

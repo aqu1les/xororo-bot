@@ -26,7 +26,8 @@ module.exports = {
     return {
       name: 'pause',
       usage: 'pause',
-      description: 'Pausa a música que está tocando'
+      description: 'Pausa a música que está tocando',
+      options: []
     };
   }
 };

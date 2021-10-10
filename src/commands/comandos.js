@@ -25,7 +25,8 @@ module.exports = {
     return {
       name: 'comandos',
       usage: 'comandos',
-      description: 'Lista todos os comandos do bot'
+      description: 'Lista todos os comandos do bot',
+      options: []
     };
   }
 };

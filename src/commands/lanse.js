@@ -53,7 +53,15 @@ module.exports = {
     return {
       name: 'lanse',
       usage: 'lanse',
-      description: 'Te lansa uma braba'
+      description: 'Te lansa uma braba',
+      options: [
+        {
+          name: 'a braba?',
+          type: 'STRING',
+          description: 'vai querer a braba?',
+          required: false
+        }
+      ]
     };
   }
 };

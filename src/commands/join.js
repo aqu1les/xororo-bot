@@ -30,7 +30,8 @@ module.exports = {
     return {
       name: 'join',
       usage: 'join',
-      description: 'Entra no seu canal de voz'
+      description: 'Entra no seu canal de voz',
+      options: []
     };
   }
 };

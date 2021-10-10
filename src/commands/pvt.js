@@ -15,7 +15,8 @@ module.exports = {
     return {
       name: 'pvt',
       usagem: 'pvt',
-      description: 'Sei lá'
+      description: 'Sei lá',
+      options: []
     };
   }
 };

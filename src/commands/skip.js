@@ -22,7 +22,8 @@ module.exports = {
     return {
       name: 'skip',
       usage: 'skip',
-      description: 'Pula a musica que tá tocando'
+      description: 'Pula a musica que tá tocando',
+      options: []
     };
   }
 };

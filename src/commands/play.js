@@ -18,48 +18,6 @@ const { playOnVoiceConnection } = require('../features/play-on-voice-channel');
  */
 let author = null;
 
-/**
- *
- * @param {string} playlistURL
- * @param {string} serverID
- * @returns {Promise<number>} playlist length
- */
-async function handlePlaylist(playlistURL, serverID) {
-  return await ytb
-    .fetchPlaylist(playlistURL)
-    .map((music) => playlist.addMusic(music, serverID)).length;
-}
-
-/**
- *
- * @param {string} keywords
- * @param {string} serverID
- * @returns {Promise<ytsr.Video>} music found
- */
-async function handleYtbSearch(keywords, serverID) {
-  const music = await ytb.search(keywords);
-  playlist.addMusic(music, serverID);
-  return music;
-}
-
-/**
- *
- * @param {string} URL
- * @param {string} serverID
- * @returns {Promise<any>}
- */
-async function handleYtbLink(URL, serverID) {
-  const ytb_music = await ytdl.getBasicInfo(URL);
-  const music = {
-    thumbnail: ytb_music.thumbnail_url,
-    link: URL,
-    title: ytb_music.title,
-    duration: millisToMinutes(ytb_music.length_seconds * 1000)
-  };
-  playlist.addMusic(music, serverID);
-  return music;
-}
-
 module.exports = {
   /**
    *
@@ -126,10 +84,60 @@ module.exports = {
     return {
       name: 'play',
       usage: 'play',
-      description: 'Toca musica né irmão'
+      description: 'Toca musica né irmão',
+      options: [
+        {
+          name: 'music',
+          type: 'STRING',
+          description: 'Link da música ou o nome a ser pesquisado',
+          required: false
+        }
+      ]
     };
   }
 };
+
+/**
+ *
+ * @param {string} playlistURL
+ * @param {string} serverID
+ * @returns {Promise<number>} playlist length
+ */
+async function handlePlaylist(playlistURL, serverID) {
+  return await ytb
+    .fetchPlaylist(playlistURL)
+    .map((music) => playlist.addMusic(music, serverID)).length;
+}
+
+/**
+ *
+ * @param {string} keywords
+ * @param {string} serverID
+ * @returns {Promise<ytsr.Video>} music found
+ */
+async function handleYtbSearch(keywords, serverID) {
+  const music = await ytb.search(keywords);
+  playlist.addMusic(music, serverID);
+  return music;
+}
+
+/**
+ *
+ * @param {string} URL
+ * @param {string} serverID
+ * @returns {Promise<any>}
+ */
+async function handleYtbLink(URL, serverID) {
+  const ytb_music = await ytdl.getBasicInfo(URL);
+  const music = {
+    thumbnail: ytb_music.thumbnail_url,
+    link: URL,
+    title: ytb_music.title,
+    duration: millisToMinutes(ytb_music.length_seconds * 1000)
+  };
+  playlist.addMusic(music, serverID);
+  return music;
+}
 
 /**
  *

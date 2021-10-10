@@ -15,7 +15,8 @@ module.exports = {
     return {
       name: 'ping',
       usage: 'ping',
-      description: 'Pong?'
+      description: 'Pong?',
+      options: []
     };
   }
 };

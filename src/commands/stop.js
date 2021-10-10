@@ -23,7 +23,8 @@ module.exports = {
     return {
       name: 'stop',
       usage: 'stop',
-      description: 'Para de tocar e vaza do canal de voz'
+      description: 'Para de tocar e vaza do canal de voz',
+      options: []
     };
   }
 };

@@ -54,7 +54,15 @@ module.exports = {
     return {
       name: 'elo',
       usage: 'elo',
-      description: 'Retorna o seu elo no lolzito'
+      description: 'Retorna o seu elo no lolzito',
+      options: [
+        {
+          name: 'username',
+          type: 'STRING',
+          description: 'Seu nick do lolzinho',
+          required: true
+        }
+      ]
     };
   }
 };

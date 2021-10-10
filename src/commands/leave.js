@@ -35,7 +35,8 @@ module.exports = {
     return {
       name: 'leave',
       usage: 'leave',
-      description: 'Sai do seu canal de voz'
+      description: 'Sai do seu canal de voz',
+      options: []
     };
   }
 };
