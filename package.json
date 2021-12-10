@@ -2,13 +2,16 @@
   "name": "xororo-bot",
   "version": "1.1.15",
   "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "engines": {
     "node": "^16.6.0"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.dev.js"
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "rename-modules": "renamer --find /.js$/ --replace .mjs dist/**/*.js",
+    "start": "node src/index.ts",
+    "dev": "cross-env NODE_ENV=local nodemon --watch ./ --exec ts-node ./src/index.ts -e ts",
+    "build:start:dev": "npm run build && npm run rename-modules && cross-env NODE_ENV=local node --experimental-modules --es-module-specifier-resolution=node ./dist/index.mjs"
   },
   "repository": "https://github.com/aqu1les/xororo-bot",
   "keywords": [
@@ -26,11 +29,24 @@
     "src/**/*": "prettier --write"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^16.11.12",
+    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^11.2.2",
     "nodemon": "^2.0.13",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^8.2.2",
+    "reflect-metadata": "^0.1.13",
+    "renamer": "^4.0.0",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.3"
   },
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
