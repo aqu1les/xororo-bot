@@ -1,73 +1,43 @@
 {
-  "name": "xororo-bot",
+  "name": "discord-bot",
   "version": "1.1.15",
   "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
-  "main": "src/index.ts",
-  "engines": {
-    "node": "^16.6.0"
-  },
-  "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.json",
-    "rename-modules": "renamer --find /.js$/ --replace .mjs dist/**/*.js",
-    "start": "node src/index.ts",
-    "dev": "cross-env NODE_ENV=local nodemon --watch ./ --exec ts-node ./src/index.ts -e ts",
-    "build:start:dev": "npm run build && npm run rename-modules && cross-env NODE_ENV=local node --experimental-modules --es-module-specifier-resolution=node ./dist/index.mjs"
-  },
-  "repository": "https://github.com/aqu1les/xororo-bot",
+  "license": "MIT",
+  "repository": "https://github.com/aqu1les/discord-bot",
   "keywords": [
     "discord",
     "bot"
   ],
+  "workspaces": ["apps/*"],
   "author": "aqu1les",
-  "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "scripts": {
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "heroku-postbuild": "npm run build && node dist/apps/discord-bot/main.js"
   },
-  "lint-staged": {
-    "src/**/*": "prettier --write"
-  },
+  "private": true,
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^16.11.12",
-    "cross-env": "^7.0.3",
-    "dotenv": "^10.0.0",
-    "eslint": "^8.4.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^11.2.2",
-    "nodemon": "^2.0.13",
-    "prettier": "^2.5.1",
-    "prettier-eslint": "^8.2.2",
-    "reflect-metadata": "^0.1.13",
-    "renamer": "^4.0.0",
-    "ts-node": "^10.4.0",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.3"
+    "@nrwl/cli": "13.3.6",
+    "@nrwl/eslint-plugin-nx": "13.3.6",
+    "@nrwl/jest": "13.3.6",
+    "@nrwl/linter": "13.3.6",
+    "@nrwl/node": "^13.3.6",
+    "@nrwl/nx-cloud": "latest",
+    "@nrwl/tao": "13.3.6",
+    "@nrwl/workspace": "13.3.6",
+    "@types/jest": "27.0.2",
+    "@types/node": "14.14.33",
+    "@typescript-eslint/eslint-plugin": "~5.3.0",
+    "@typescript-eslint/parser": "~5.3.0",
+    "eslint": "8.2.0",
+    "eslint-config-prettier": "8.1.0",
+    "jest": "27.2.3",
+    "prettier": "^2.3.1",
+    "ts-jest": "27.0.5",
+    "typescript": "~4.4.3"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "@discordjs/voice": "^0.6.0",
-    "axios": "^0.21.2",
-    "bufferutil": "^4.0.4",
-    "discord-api-types": "^0.23.1",
-    "discord.js": "^13.2.0",
-    "enmap": "^5.8.7",
-    "ffmpeg": "^0.0.4",
-    "ffmpeg-static": "^4.4.0",
-    "fs-extra": "^7.0.1",
-    "libsodium": "^0.7.9",
-    "libsodium-wrappers": "^0.7.9",
-    "mongoose": "^5.9.15",
-    "opusscript": "^0.0.8",
-    "tweetnacl": "^1.0.3",
-    "utf-8-validate": "^5.0.6",
-    "ytdl-core": "^4.8.2",
-    "ytpl": "^2.2.1",
-    "ytsr": "^3.5.0"
+    "tslib": "^2.0.0"
   }
 }

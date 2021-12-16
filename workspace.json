@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "projects": {
+    "discord-bot": "apps/discord-bot"
+  }
+}
