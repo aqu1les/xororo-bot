@@ -65,29 +65,31 @@ export class MessageCreate implements EventHandler {
     if (!cmd) return;
 
     try {
-      const dateObj = new Date(Date.now());
-      const date = `${dateObj.getFullYear()}-${
-        dateObj.getMonth() + 1
-      }-${dateObj.getDate()}`;
+      // TODO: armazenar logs no mongodb
 
-      const logmsg = `[#LOG]: ${date} - ${message.member?.user?.username} (${message.member?.id}) executou o comando: ${cmd.displayName}`;
-      const name = date + '-log';
+      // const dateObj = new Date(Date.now());
+      // const date = `${dateObj.getFullYear()}-${
+      //   dateObj.getMonth() + 1
+      // }-${dateObj.getDate()}`;
 
-      if (!fs.existsSync(`src/logs`)) {
-        fs.mkdirSync(`src/logs`);
-      }
+      // const logmsg = `[#LOG]: ${date} - ${message.member?.user?.username} (${message.member?.id}) executou o comando: ${cmd.displayName}`;
+      // const name = date + '-log';
 
-      fs.appendFile(
-        `src/logs/${name}.txt`,
-        `${logmsg} ${args.join(' ') || ''} \n`,
-        (err: any) => {
-          if (err) {
-            throw err;
-          }
+      // if (!fs.existsSync(`src/logs`)) {
+      //   fs.mkdirSync(`src/logs`);
+      // }
 
-          console.log(logmsg);
-        }
-      );
+      // fs.appendFile(
+      //   `src/logs/${name}.txt`,
+      //   `${logmsg} ${args.join(' ') || ''} \n`,
+      //   (err: any) => {
+      //     if (err) {
+      //       throw err;
+      //     }
+
+      //     console.log(logmsg);
+      //   }
+      // );
 
       if (cmd.validate) {
         await cmd.validate(client, message, args);
