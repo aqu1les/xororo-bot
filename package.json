@@ -16,7 +16,8 @@
     "test": "nx test"
   },
   "engines": {
-    "node": "^16.6.0"
+    "node": "^16.6.0",
+    "yarn": "1.22.17"
   },
   "private": true,
   "devDependencies": {
