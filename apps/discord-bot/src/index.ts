@@ -6,7 +6,7 @@ import { DatabaseConnection } from './Database';
 import { CommandsManager } from './Commands/CommandsManager';
 import { eventsManager } from './Discord/Events/EventsManager';
 import { DiscordClient } from './Discord/Client';
-import { resolve } from './Helpers';
+import { resolve } from '@xororo/core/providers';
 
 export class App {
   async init() {

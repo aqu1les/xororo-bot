@@ -1,7 +1,7 @@
 import { Client, Message } from 'discord.js';
-import fs from 'fs-extra';
+// import fs from 'fs-extra';
 import { CommandsManager } from '../../../Commands/CommandsManager';
-import { resolve } from '../../../Helpers';
+import { resolve } from '@xororo/core/providers';
 import { EventHandler } from '../EventHandler';
 
 const commandPrefix = '!';

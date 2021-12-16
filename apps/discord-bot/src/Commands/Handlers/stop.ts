@@ -1,4 +1,3 @@
-import { Message, CommandInteraction, Client } from 'discord.js';
 import { AppCommand } from '../Command';
 
 export class StopCommand implements AppCommand {
@@ -7,7 +6,7 @@ export class StopCommand implements AppCommand {
   readonly description = 'Para de tocar e vaza do canal de voz';
   readonly interactionOptions = [];
 
-  async run(client: Client, event: Message | CommandInteraction) {
+  async run() {
     // if (event.guild.voice && event.guild.voice.connection) {
     //   const { connection } = event.guild.voice;
     //   if (connection && connection.dispatcher) {

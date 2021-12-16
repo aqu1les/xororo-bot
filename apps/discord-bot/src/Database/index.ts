@@ -1,5 +1,5 @@
+import { Injectable } from '@xororo/core/providers';
 import mongoose from 'mongoose';
-import { Injectable } from '../Providers/ProvidersDecorators';
 
 // TODO: INVERTER DEPENDENCIA
 @Injectable()

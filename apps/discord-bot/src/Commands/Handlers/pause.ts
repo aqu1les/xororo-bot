@@ -1,5 +1,5 @@
-import { getVoiceConnection } from '@discordjs/voice';
-import { Message, CommandInteraction, Client } from 'discord.js';
+// import { getVoiceConnection } from '@discordjs/voice';
+// import { Message, CommandInteraction, Client } from 'discord.js';
 import { AppCommand } from '../Command';
 
 export class PauseCommand implements AppCommand {
@@ -8,7 +8,7 @@ export class PauseCommand implements AppCommand {
   readonly description = 'Pausa a música que está tocando';
   readonly interactionOptions = [];
 
-  async run(client: Client, event: Message | CommandInteraction) {
+  async run() {
     // if (!event.guild!.voice || !event.guild!.voice.connection) {
     //   return event.reply('tem nada pra pausar carai');
     // }

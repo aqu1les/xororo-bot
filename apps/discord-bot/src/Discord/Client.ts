@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { CommandsManager } from '../Commands/CommandsManager';
-import { resolve } from '../Helpers';
+import { resolve } from '@xororo/core/providers';
 
 export class DiscordClient {
   client = new Client({

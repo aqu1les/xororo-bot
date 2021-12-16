@@ -15,6 +15,12 @@ export class JoinCommand implements AppCommand {
 
   async run(client: Client, event: Message | CommandInteraction) {
     const member = event.member as GuildMember;
+    const guild = event.guild;
+    const channel = member.voice.channel;
+
+    if (!guild || !channel) {
+      return;
+    }
 
     if (!memberIsOnVoiceChannel(member)) {
       return event.reply(
@@ -22,9 +28,9 @@ export class JoinCommand implements AppCommand {
       );
     }
 
-    if (!botIsConnected(event.guild!)) {
+    if (!botIsConnected(guild)) {
       event.reply('Entrando...');
-      return createVoiceConnection(member.voice.channel!.id, event.guild!);
+      return createVoiceConnection(channel.id, guild);
     }
 
     return event.reply('to ocupado, da licença');

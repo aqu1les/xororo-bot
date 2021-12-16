@@ -7,13 +7,18 @@ export class PvtCommand implements AppCommand {
   readonly description = 'Sei lá';
   readonly interactionOptions = [];
 
-  run(client: Client, event: Message | CommandInteraction) {
-    const avatar = event.member?.user.avatar;
+  async run(client: Client, event: Message | CommandInteraction) {
+    const user = event.member?.user;
 
-    if (avatar) {
-      return event.reply(avatar);
+    if (!user) {
+      return event.reply('sai doido');
     }
 
-    return;
+    const avatarUrl = await client.users
+      .fetch(user.id)
+      .then((fetchedUser) => fetchedUser.displayAvatarURL())
+      .catch(() => 'oxe deu algum erro bixo');
+
+    return event.reply(avatarUrl);
   }
 }

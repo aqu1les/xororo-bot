@@ -5,7 +5,6 @@
     "module": "commonjs",
     "types": ["node"],
     "removeComments": true,
-    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "allowJs": true,

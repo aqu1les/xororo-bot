@@ -13,6 +13,12 @@
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "environments/environment.ts",
+              "with": "environments/environment.prod.ts"
+            }
+          ],
           "optimization": true,
           "extractLicenses": true,
           "inspect": false
@@ -23,13 +29,18 @@
       "executor": "@nrwl/node:execute",
       "options": {
         "buildTarget": "discord-bot:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "discord-bot:build:prod"
+        }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/discord-bot/**/*.ts"]
+        "lintFilePatterns": ["apps/discord-bot/src/**/*.ts"]
       }
     },
     "test": {

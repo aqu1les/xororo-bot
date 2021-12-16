@@ -1,6 +1,6 @@
 import { Client, CommandInteraction } from 'discord.js';
 import { CommandsManager } from '../../../Commands/CommandsManager';
-import { resolve } from '../../../Helpers';
+import { resolve } from '@xororo/core/providers';
 import { EventHandler } from '../EventHandler';
 
 export class InteractionCreate implements EventHandler {

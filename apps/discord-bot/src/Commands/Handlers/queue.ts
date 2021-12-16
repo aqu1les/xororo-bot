@@ -1,4 +1,4 @@
-import { Message, CommandInteraction, Client } from 'discord.js';
+// import { Message, CommandInteraction, Client } from 'discord.js';
 // import { millisToMinutes } from '../../Adapters/utils';
 // import PlaylistFactory from '../../features/playlist';
 // const playlist = PlaylistFactory();
@@ -11,7 +11,7 @@ export class QueueCommand implements AppCommand {
   readonly description = 'Mostra a playlist atual';
   readonly interactionOptions = [];
 
-  run(client: Client, event: Message | CommandInteraction) {
+  run() {
     // if (!event.guild.voice || !event.guild.voice.connection) {
     //   return event.reply('a playlist ta vazia meu guerreiro');
     // }

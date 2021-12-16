@@ -42,8 +42,14 @@ export class PlayCommand implements AppCommand {
     event: Message | CommandInteraction,
     args: string[]
   ) {
-    const guild = event.guild!;
-    const member = event.member! as GuildMember;
+    const guild = event.guild;
+    const channel = event.channel;
+
+    if (!guild || !channel) {
+      return;
+    }
+
+    const member = event.member as GuildMember;
     const guildId = guild.id;
 
     if (args.length === 0) {
@@ -80,13 +86,13 @@ export class PlayCommand implements AppCommand {
       );
 
       if (!botIsConnected(guild)) {
-        const connection = createVoiceConnection(member!.id, guild);
+        const connection = createVoiceConnection(member.id, guild);
 
         return playOnVoiceConnection(
           connection,
-          event.channel!,
+          event.channel,
           guildId,
-          author!
+          author
         );
       }
 

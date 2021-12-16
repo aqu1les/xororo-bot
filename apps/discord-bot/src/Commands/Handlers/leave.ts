@@ -17,8 +17,14 @@ export class LeaveCommand implements AppCommand {
 
   async run(client: Client, event: Message | CommandInteraction) {
     const member = event.member as GuildMember;
+    const guild = event.guild;
+    const channel = member.voice.channel;
 
-    if (!botIsConnected(event.guild!)) {
+    if (!guild || !channel) {
+      return;
+    }
+
+    if (!botIsConnected(guild)) {
       return event.reply(`sai tu`);
     }
 
@@ -26,17 +32,17 @@ export class LeaveCommand implements AppCommand {
       return event.reply(`se fude porra`);
     }
 
-    const connection = getVoiceConnection(event.guild!.id);
+    const connection = getVoiceConnection(guild.id);
     const channelMock = { id: connection?.joinConfig.channelId };
 
-    if (!isSameChannel(channelMock as any, member.voice.channel!)) {
+    if (!isSameChannel(channelMock as any, channel)) {
       return event.reply(
         `tu nem ta nesse canal de voz amigão, me deixa em paz`
       );
     }
 
     connection?.disconnect();
-    playlist.setPlaylist(event.guild!.id);
+    playlist.setPlaylist(guild.id);
 
     return event.reply(`bejo`);
   }

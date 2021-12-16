@@ -1,6 +1,6 @@
 import { ApplicationCommandDataResolvable } from 'discord.js';
 
-import { Injectable } from '../Providers/ProvidersDecorators';
+import { Injectable } from '@xororo/core/providers';
 import { AppCommand } from './Command';
 import { COMMANDS_HANDLERS } from './Handlers';
 

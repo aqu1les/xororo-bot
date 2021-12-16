@@ -1,4 +1,3 @@
-import { Message, CommandInteraction, Client } from 'discord.js';
 import { AppCommand } from '../Command';
 
 export class SkipCommand implements AppCommand {
@@ -7,7 +6,7 @@ export class SkipCommand implements AppCommand {
   readonly description = 'Pula a musica que tá tocando';
   readonly interactionOptions = [];
 
-  async run(client: Client, event: Message | CommandInteraction) {
+  async run() {
     // if (event.guild.voice && event.guild.voice.connection) {
     //   const connection = event.guild.voice.connection;
     //   if (connection && connection.dispatcher) {

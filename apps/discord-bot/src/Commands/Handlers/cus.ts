@@ -8,11 +8,7 @@ export class CusCommand implements AppCommand {
   readonly description = 'Lista quantos cus você já comeu';
   readonly interactionOptions = [];
 
-  async run(
-    client: Client,
-    event: Message | CommandInteraction,
-    args: string[]
-  ) {
+  async run(client: Client, event: Message | CommandInteraction) {
     const member = event.member as GuildMember;
     const response = await this.getCusComidos(member.id, member.user.username);
 

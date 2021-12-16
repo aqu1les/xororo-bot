@@ -8,12 +8,16 @@
     "discord",
     "bot"
   ],
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "author": "aqu1les",
   "scripts": {
     "start": "node dist/apps/discord-bot/main.js",
-    "build": "nx build",
-    "test": "nx test"
+    "start:bot:dev": "nx run discord-bot:serve",
+    "build": "nx run-many --all --target=build --parallel",
+    "test": "nx run-many --all --target=test --parallel",
+    "lint": "nx run-many --all --target=lint --parallel"
   },
   "engines": {
     "node": "^16.6.0",
