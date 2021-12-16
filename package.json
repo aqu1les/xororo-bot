@@ -11,10 +11,9 @@
   "workspaces": ["apps/*"],
   "author": "aqu1les",
   "scripts": {
-    "start": "nx serve",
+    "start": "node dist/apps/discord-bot/main.js",
     "build": "nx build",
-    "test": "nx test",
-    "heroku-postbuild": "npm run build && node dist/apps/discord-bot/main.js"
+    "test": "nx test"
   },
   "engines": {
     "node": "^16.6.0"
