@@ -17,6 +17,7 @@
     "start:bot:dev": "nx run discord-bot:serve",
     "build": "nx run-many --all --target=build --parallel",
     "test": "nx run-many --all --target=test --parallel",
+    "test:watch": "nx run-many --all --target=test --parallel --watch --codeCoverage=true",
     "lint": "nx run-many --all --target=lint --parallel"
   },
   "engines": {
