@@ -1,6 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "xororo-bot": "apps/xororo-bot"
+    "discord-bot": "apps/discord-bot"
   }
 }

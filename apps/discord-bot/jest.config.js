@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'xororo-bot',
+  displayName: 'discord-bot',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/xororo-bot',
+  coverageDirectory: '../../coverage/apps/discord-bot',
 };

@@ -1,8 +1,10 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
     "module": "commonjs",
+    "types": ["node"],
     "removeComments": true,
-    "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
@@ -11,13 +13,12 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "declaration": false,
     "lib": ["esnext"],
     "sourceMap": true,
     "target": "esnext",
     "incremental": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/*.ts"]
 }
