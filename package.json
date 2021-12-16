@@ -1,7 +1,14 @@
 {
   "name": "xororo-bot",
-  "version": "0.0.0",
+  "version": "1.1.15",
+  "description": "Xororó BOT - O mais tóxico que você vai encontrar.",
   "license": "MIT",
+  "repository": "https://github.com/aqu1les/xororo-bot",
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "aqu1les",
   "scripts": {
     "start": "nx serve",
     "build": "nx build",

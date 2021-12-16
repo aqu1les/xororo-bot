@@ -37,3 +37,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+node_modules
+teste.js
+.env
+src/logs
+.vscode
+dist
