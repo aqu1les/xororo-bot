@@ -2,8 +2,8 @@ import Discord from 'discord.js';
 import { VoiceConnection } from '@discordjs/voice';
 import ytdl from 'ytdl-core';
 
-import createEmbed from '../adapters/embed';
-import PlaylistFactory from '../features/playlist';
+import createEmbed from '../Adapters/embed';
+import PlaylistFactory from './playlist';
 const playlist = PlaylistFactory();
 
 export async function playOnVoiceConnection(

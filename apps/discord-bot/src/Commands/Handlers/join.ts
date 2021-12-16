@@ -2,7 +2,7 @@ import {
   memberIsOnVoiceChannel,
   botIsConnected,
   createVoiceConnection
-} from '../../helpers/voice-connection';
+} from '../../Helpers/voice-connection';
 
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
 import { AppCommand } from '../Command';

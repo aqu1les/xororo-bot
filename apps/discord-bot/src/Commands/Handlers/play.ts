@@ -1,17 +1,17 @@
 import ytdl from 'ytdl-core';
 import ytsr from 'ytsr';
 
-import ytb from '../../adapters/ytb';
-import PlaylistFactory from '../../features/playlist';
+import ytb from '../../Adapters/ytb';
+import PlaylistFactory from '../../Features/playlist';
 const playlist = PlaylistFactory();
-import createEmbed from '../../adapters/embed';
-import { millisToMinutes } from '../../adapters/utils';
+import createEmbed from '../../Adapters/embed';
+import { millisToMinutes } from '../../Adapters/utils';
 import {
   memberIsOnVoiceChannel,
   botIsConnected,
   createVoiceConnection
-} from '../../helpers/voice-connection';
-import { playOnVoiceConnection } from '../../features/play-on-voice-channel';
+} from '../../Helpers/voice-connection';
+import { playOnVoiceConnection } from '../../Features/play-on-voice-channel';
 import {
   Message,
   CommandInteraction,

@@ -13,7 +13,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "heroku-postbuild": "npm run build && node dist/apps/discord-bot/main.js"
   },
   "private": true,
   "devDependencies": {

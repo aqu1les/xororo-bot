@@ -1,7 +1,7 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
-import { millisToMinutes } from '../../adapters/utils';
-import PlaylistFactory from '../../features/playlist';
-const playlist = PlaylistFactory();
+// import { millisToMinutes } from '../../Adapters/utils';
+// import PlaylistFactory from '../../features/playlist';
+// const playlist = PlaylistFactory();
 
 import { AppCommand } from '../Command';
 

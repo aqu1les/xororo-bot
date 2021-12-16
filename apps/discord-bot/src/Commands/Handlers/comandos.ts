@@ -1,7 +1,7 @@
 import { CommandsManager } from '../CommandsManager';
 import { Message, CommandInteraction, Client } from 'discord.js';
 import { AppCommand } from '../Command';
-import { resolve } from '../../helpers';
+import { resolve } from '../../Helpers';
 
 export class CommandsListCommand implements AppCommand {
   readonly displayName = 'comandos';

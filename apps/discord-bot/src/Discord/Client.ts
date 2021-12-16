@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { CommandsManager } from '../Commands/CommandsManager';
-import { resolve } from '../helpers';
+import { resolve } from '../Helpers';
 
 export class DiscordClient {
   client = new Client({

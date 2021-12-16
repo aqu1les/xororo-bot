@@ -4,8 +4,8 @@ import {
   botIsConnected,
   isSameChannel,
   memberIsOnVoiceChannel
-} from '../../helpers/voice-connection';
-import PlaylistFactory from '../../features/playlist';
+} from '../../Helpers/voice-connection';
+import PlaylistFactory from '../../Features/playlist';
 const playlist = PlaylistFactory();
 import { AppCommand } from '../Command';
 

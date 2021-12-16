@@ -1,6 +1,6 @@
 import { Client, CommandInteraction } from 'discord.js';
 import { CommandsManager } from '../../../Commands/CommandsManager';
-import { resolve } from '../../../helpers';
+import { resolve } from '../../../Helpers';
 import { EventHandler } from '../EventHandler';
 
 export class InteractionCreate implements EventHandler {

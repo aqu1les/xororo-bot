@@ -6,7 +6,7 @@ import { DatabaseConnection } from './Database';
 import { CommandsManager } from './Commands/CommandsManager';
 import { eventsManager } from './Discord/Events/EventsManager';
 import { DiscordClient } from './Discord/Client';
-import { resolve } from './helpers';
+import { resolve } from './Helpers';
 
 export class App {
   async init() {

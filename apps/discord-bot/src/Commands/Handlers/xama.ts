@@ -1,5 +1,5 @@
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
-import User from '../../model/User';
+import User from '../../Model/User';
 import { AppCommand } from '../Command';
 
 export class XamaCommand implements AppCommand {

@@ -5,13 +5,6 @@
   "engines": {
     "node": "^16.6.0"
   },
-  "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.json",
-    "rename-modules": "renamer --find /.js$/ --replace .mjs dist/**/*.js",
-    "start": "node src/index.ts",
-    "dev": "cross-env NODE_ENV=local nodemon --watch ./ --exec ts-node ./src/index.ts -e ts",
-    "build:start:dev": "npm run build && npm run rename-modules && cross-env NODE_ENV=local node --experimental-modules --es-module-specifier-resolution=node ./dist/index.mjs"
-  },
   "private": true,
   "husky": {
     "hooks": {

@@ -1,7 +1,7 @@
 import { Client, Message } from 'discord.js';
 import fs from 'fs-extra';
 import { CommandsManager } from '../../../Commands/CommandsManager';
-import { resolve } from '../../../helpers';
+import { resolve } from '../../../Helpers';
 import { EventHandler } from '../EventHandler';
 
 const commandPrefix = '!';

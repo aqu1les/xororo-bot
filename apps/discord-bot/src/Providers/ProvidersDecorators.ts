@@ -1,6 +1,6 @@
-import { resolve } from '../helpers';
+import { resolve } from '../Helpers';
 
-export function Injectable(): Function {
+export function Injectable(): any {
   return function <T extends { new (): any }>(
     InjectableClass: T
   ): T & { SERVICE_NAME: string } {
