@@ -1,11 +1,25 @@
-import mongoose from 'mongoose';
+import { users } from '@prisma/client';
+import { Model } from './Model';
 
-const UserSchema = new mongoose.Schema({
-  uid: String,
-  name: String,
-  xesques: { type: Number, default: 0 },
-  brabas: { type: Number, default: 0 },
-  cus_comidos: { type: Array, default: [] }
-});
+export type IUser = users;
+export class User extends Model {
+  public static collectionType: IUser;
+  tableName = 'users';
 
-export default mongoose.model('user', UserSchema);
+  uid!: string;
+  name!: string;
+  cus_comidos: string[] = [];
+  brabas = 0;
+  xesques = 0;
+
+  toDatabase(): Record<string, unknown> {
+    return {
+      ...super.toDatabase(),
+      uid: this.uid,
+      name: this.name,
+      cus_comidos: this.cus_comidos,
+      brabas: this.brabas,
+      xesques: this.xesques
+    };
+  }
+}

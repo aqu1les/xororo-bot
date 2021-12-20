@@ -1,18 +1,18 @@
 import { Injectable } from '@xororo/core/providers';
-import mongoose from 'mongoose';
+import { PrismaClient } from '@prisma/client';
 
 // TODO: INVERTER DEPENDENCIA
 @Injectable()
 export class DatabaseConnection {
+  public client: PrismaClient = new PrismaClient();
+
   async init() {
-    return mongoose
-      .connect(
-        `mongodb+srv://aqu1les:${process.env.DB_PASSWORD}@cluster0-kvfg5.mongodb.net/xororo?retryWrites=true&w=majority`,
-        {
-          useNewUrlParser: true,
-          useUnifiedTopology: true
-        }
-      )
-      .then(() => console.log('Connected to mongodb Atlas'));
+    return await this.client.$connect();
+  }
+
+  async close() {
+    console.log('closing db connection');
+
+    return await this.client.$disconnect();
   }
 }

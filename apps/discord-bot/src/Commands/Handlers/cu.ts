@@ -1,4 +1,4 @@
-import User from '../../Model/User';
+import { User } from '../../Model/User';
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
 import { AppCommand } from '../Command';
 
