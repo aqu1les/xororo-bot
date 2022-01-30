@@ -7,9 +7,9 @@ import {
 } from '../../Helpers/voice-connection';
 import PlaylistFactory from '../../Features/playlist';
 const playlist = PlaylistFactory();
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class LeaveCommand implements AppCommand {
+export class LeaveCommand implements DiscordCommandHandler {
   readonly displayName = 'leave';
   readonly usage = 'leave';
   readonly description = 'Sai do seu canal de voz';

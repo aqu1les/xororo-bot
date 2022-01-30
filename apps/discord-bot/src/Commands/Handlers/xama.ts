@@ -1,8 +1,8 @@
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
 import { User } from '../../Model/User';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class XamaCommand implements AppCommand {
+export class XamaCommand implements DiscordCommandHandler {
   readonly displayName = 'xama';
   readonly usage = 'xama';
   readonly description = 'XAAAAAAAAAAAAAAAAAMA';

@@ -1,9 +1,9 @@
 import { CommandsManager } from '../CommandsManager';
 import { Message, CommandInteraction, Client } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 import { resolve } from '@xororo/core/providers';
 
-export class CommandsListCommand implements AppCommand {
+export class CommandsListCommand implements DiscordCommandHandler {
   readonly displayName = 'comandos';
   readonly usage = 'comandos';
   readonly description = 'Lista todos os comandos do bot';

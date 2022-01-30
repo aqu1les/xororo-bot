@@ -1,7 +1,7 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class PvtCommand implements AppCommand {
+export class PvtCommand implements DiscordCommandHandler {
   readonly displayName = 'pvt';
   readonly usage = 'pvt';
   readonly description = 'Sei lá';

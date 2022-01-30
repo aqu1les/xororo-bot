@@ -1,6 +1,6 @@
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class StopCommand implements AppCommand {
+export class StopCommand implements DiscordCommandHandler {
   readonly displayName = 'stop';
   readonly usage = 'stop';
   readonly description = 'Para de tocar e vaza do canal de voz';

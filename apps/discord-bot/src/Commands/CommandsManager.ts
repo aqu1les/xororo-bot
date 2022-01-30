@@ -1,12 +1,12 @@
 import { ApplicationCommandDataResolvable } from 'discord.js';
 
 import { Injectable } from '@xororo/core/providers';
-import { AppCommand } from './Command';
+import { DiscordCommandHandler } from './Command';
 import { COMMANDS_HANDLERS } from './Handlers';
 
 @Injectable()
 export class CommandsManager {
-  private readonly state = new Map<string, AppCommand>();
+  private readonly state = new Map<string, DiscordCommandHandler>();
   static instance: CommandsManager;
 
   constructor() {
@@ -17,9 +17,9 @@ export class CommandsManager {
     CommandsManager.instance = this;
   }
 
-  get commands(): { [key: string]: AppCommand } {
+  get commands(): { [key: string]: DiscordCommandHandler } {
     const response: {
-      [key: string]: AppCommand;
+      [key: string]: DiscordCommandHandler;
     } = {};
 
     [...this.state.entries()].forEach(
@@ -58,7 +58,7 @@ export class CommandsManager {
     });
   }
 
-  private set(commandName: string, commandInstance: AppCommand) {
+  private set(commandName: string, commandInstance: DiscordCommandHandler) {
     this.state.set(commandName, commandInstance);
   }
 }

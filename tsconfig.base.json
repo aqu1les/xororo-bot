@@ -17,7 +17,8 @@
     "paths": {
       "environment": ["environments/environment.ts"],
       "@xororo/core": ["libs/core/src/index.ts"],
-      "@xororo/core/providers": ["libs/core/src/lib/Providers/index.ts"]
+      "@xororo/core/providers": ["libs/core/src/lib/Providers/index.ts"],
+      "@xororo/core/commands": ["libs/core/src/lib/Commands/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

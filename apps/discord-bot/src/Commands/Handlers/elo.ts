@@ -1,11 +1,11 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
 import axios from 'axios';
 
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
 const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
-export class EloCommand implements AppCommand {
+export class EloCommand implements DiscordCommandHandler {
   readonly displayName = 'elo';
   readonly usage = 'elo';
   readonly description = 'Retorna o seu elo no lolzito';

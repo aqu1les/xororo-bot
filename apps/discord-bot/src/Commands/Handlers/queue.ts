@@ -3,9 +3,9 @@
 // import PlaylistFactory from '../../features/playlist';
 // const playlist = PlaylistFactory();
 
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class QueueCommand implements AppCommand {
+export class QueueCommand implements DiscordCommandHandler {
   readonly displayName = 'queue';
   readonly usage = 'queue';
   readonly description = 'Mostra a playlist atual';

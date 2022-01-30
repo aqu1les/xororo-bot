@@ -2,9 +2,9 @@ import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
 // import ytdl from 'ytdl-core';
 import { User } from '../../Model/User';
 
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class LanseCommand implements AppCommand {
+export class LanseCommand implements DiscordCommandHandler {
   readonly displayName = 'lanse';
   readonly usage = 'lanse';
   readonly description = 'Te lansa uma braba';

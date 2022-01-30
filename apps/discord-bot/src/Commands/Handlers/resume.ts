@@ -1,6 +1,6 @@
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class ResumeCommand implements AppCommand {
+export class ResumeCommand implements DiscordCommandHandler {
   readonly displayName = 'resume';
   readonly usage = 'resume';
   readonly description = 'Da play na musica pausada';

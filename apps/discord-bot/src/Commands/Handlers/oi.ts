@@ -1,13 +1,9 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
-import { AppCommand } from '../Command';
+import { OiCommand as BaseOiCommand } from '@xororo/core/commands';
+import { DiscordCommandHandler } from '../Command';
 
-export class OiCommand implements AppCommand {
-  readonly displayName = 'oi';
-  readonly usage = 'oi';
-  readonly description = 'Salve?';
-  readonly interactionOptions = [];
-
+export class OiCommandAdapter extends BaseOiCommand implements DiscordCommandHandler {
   run(client: Client, event: Message | CommandInteraction) {
-    return event.reply('EAI CARAIO');
+    return super.exec(event);
   }
 }

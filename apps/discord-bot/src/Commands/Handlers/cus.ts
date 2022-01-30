@@ -1,8 +1,8 @@
 import { User } from '../../Model/User';
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class CusCommand implements AppCommand {
+export class CusCommand implements DiscordCommandHandler {
   readonly displayName = 'cus';
   readonly usage = 'cus';
   readonly description = 'Lista quantos cus você já comeu';

@@ -1,7 +1,7 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class PingCommand implements AppCommand {
+export class PingCommand implements DiscordCommandHandler {
   readonly displayName = 'ping';
   readonly usage = 'ping';
   readonly description = 'Pong?';
