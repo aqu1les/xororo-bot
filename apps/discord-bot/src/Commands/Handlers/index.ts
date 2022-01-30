@@ -1,5 +1,4 @@
 import { XamaCommand } from './xama';
-import { LanseCommand } from './lanse';
 import { PingCommand } from './ping';
 import { PvtCommand } from './pvt';
 
@@ -9,6 +8,7 @@ import { ComandosCommandAdapter } from './Adapters/comandos.adapter';
 import { CuCommandAdapter } from './Adapters/cu.adapter';
 import { CusCommandAdapter } from './Adapters/cus.adapter';
 import { EloCommandAdapter } from './Adapters/elo.adapter';
+import { LanseCommandAdapter } from './Adapters/lanse.adapter';
 
 // UNIQUE COMMANDS
 import { JoinCommand } from './join';
@@ -31,7 +31,7 @@ export const COMMANDS_HANDLERS: {
   CuCommandAdapter,
   CusCommandAdapter,
   EloCommandAdapter,
-  LanseCommand,
+  LanseCommandAdapter,
   PingCommand,
   PvtCommand,
   XamaCommand,

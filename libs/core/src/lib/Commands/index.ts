@@ -4,3 +4,4 @@ export { ComandosCommand } from './comandos.command';
 export { CuCommand } from './cu.command';
 export { CusCommand } from './cus.command';
 export { EloCommand } from './elo.command';
+export { LanseCommand } from './lanse.command';
