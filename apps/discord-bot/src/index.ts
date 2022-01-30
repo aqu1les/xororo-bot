@@ -4,7 +4,7 @@ run();
 
 import { resolve } from '@xororo/core/providers';
 import { DatabaseConnection } from './Database';
-import { CommandsManager } from './Commands/CommandsManager';
+import { DiscordCommandsManager } from './Commands/DiscordCommandsManager';
 import { eventsManager } from './Discord/Events/EventsManager';
 import { DiscordClient } from './Discord/Client';
 
@@ -13,7 +13,7 @@ export class App {
 
   async init() {
     try {
-      const commandsManager = resolve(CommandsManager);
+      const commandsManager = resolve(DiscordCommandsManager);
       const discordClient = new DiscordClient();
 
       await Promise.all([

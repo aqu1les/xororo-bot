@@ -1,5 +1,5 @@
 import { Client, Intents } from 'discord.js';
-import { CommandsManager } from '../Commands/CommandsManager';
+import { DiscordCommandsManager } from '../Commands/DiscordCommandsManager';
 import { resolve } from '@xororo/core/providers';
 
 export class DiscordClient {
@@ -11,8 +11,8 @@ export class DiscordClient {
     ]
   });
 
-  private get commandsManager(): CommandsManager {
-    return resolve(CommandsManager);
+  private get commandsManager(): DiscordCommandsManager {
+    return resolve(DiscordCommandsManager);
   }
 
   async login() {

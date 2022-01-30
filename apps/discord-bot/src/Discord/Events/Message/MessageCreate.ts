@@ -1,6 +1,6 @@
 import { Client, Message } from 'discord.js';
 // import fs from 'fs-extra';
-import { CommandsManager } from '../../../Commands/CommandsManager';
+import { DiscordCommandsManager } from '../../../Commands/DiscordCommandsManager';
 import { resolve } from '@xororo/core/providers';
 import { EventHandler } from '../EventHandler';
 
@@ -8,8 +8,8 @@ const commandPrefix = '!';
 const commandPrefix2 = '/';
 
 export class MessageCreate implements EventHandler {
-  private get commandsManager(): CommandsManager {
-    return resolve(CommandsManager);
+  private get commandsManager(): DiscordCommandsManager {
+    return resolve(DiscordCommandsManager);
   }
 
   async exec(client: Client, event: Message) {
