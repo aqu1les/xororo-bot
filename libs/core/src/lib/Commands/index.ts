@@ -7,3 +7,4 @@ export { EloCommand } from './elo.command';
 export { LanseCommand } from './lanse.command';
 export { PingCommand } from './ping.command';
 export { PvtCommand } from './pvt.command';
+export { XamaCommand } from './xama.command';

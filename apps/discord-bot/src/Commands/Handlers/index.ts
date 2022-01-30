@@ -1,5 +1,3 @@
-import { XamaCommand } from './xama';
-
 // ADAPTED COMMANDS
 import { OiCommandAdapter } from './Adapters/oi.adapter';
 import { ComandosCommandAdapter } from './Adapters/comandos.adapter';
@@ -9,6 +7,7 @@ import { EloCommandAdapter } from './Adapters/elo.adapter';
 import { LanseCommandAdapter } from './Adapters/lanse.adapter';
 import { PingCommandAdapter } from './Adapters/ping.adapter';
 import { PvtCommandAdapter } from './Adapters/pvt.adapter';
+import { XamaCommandAdapter } from './Adapters/xama.adapter';
 
 // UNIQUE COMMANDS
 import { JoinCommand } from './join';
@@ -34,7 +33,7 @@ export const COMMANDS_HANDLERS: {
   LanseCommandAdapter,
   PingCommandAdapter,
   PvtCommandAdapter,
-  XamaCommand,
+  XamaCommandAdapter,
   // UNIQUE ↓
   JoinCommand,
   // MUSIC PLAY
