@@ -16,13 +16,10 @@ export abstract class Command {
    */
   abstract description: string;
 
-  /** TODO: definir interface comum */
-  interactionOptions: any[] = [];
-
   /**
    * Execução do comando
    */
-  protected abstract exec(interaction: Interaction): unknown;
+  protected abstract exec(interaction: Interaction, args?: string[]): unknown;
 
   /**
    * Validação para ver se o comando pode ser executado
