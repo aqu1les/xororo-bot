@@ -1,7 +1,7 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
 import { CuCommand } from '@xororo/core/commands';
-import { User } from '../../Model/User';
-import { DiscordCommandHandler } from '../Command';
+import { User } from '../../../Model/User';
+import { DiscordCommandHandler } from '../../Command';
 import { interactionAdapter } from './interaction.adapter';
 
 export class CuCommandAdapter

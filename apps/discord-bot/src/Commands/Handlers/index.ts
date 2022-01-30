@@ -1,4 +1,3 @@
-import { CusCommand } from './cus';
 import { EloCommand } from './elo';
 import { XamaCommand } from './xama';
 import { JoinCommand } from './join';
@@ -7,9 +6,10 @@ import { PingCommand } from './ping';
 import { PvtCommand } from './pvt';
 
 // ADAPTED COMMANDS
-import { OiCommandAdapter } from './oi.adapter';
-import { ComandosCommandAdapter } from './comandos.adapter';
-import { CuCommandAdapter } from './cu.adapter';
+import { OiCommandAdapter } from './Adapters/oi.adapter';
+import { ComandosCommandAdapter } from './Adapters/comandos.adapter';
+import { CuCommandAdapter } from './Adapters/cu.adapter';
+import { CusCommandAdapter } from './Adapters/cus.adapter';
 
 // MUSIC PLAY
 import { LeaveCommand } from './leave';
@@ -27,7 +27,7 @@ export const COMMANDS_HANDLERS: {
   OiCommandAdapter,
   ComandosCommandAdapter,
   CuCommandAdapter,
-  CusCommand,
+  CusCommandAdapter,
   EloCommand,
   JoinCommand,
   LanseCommand,

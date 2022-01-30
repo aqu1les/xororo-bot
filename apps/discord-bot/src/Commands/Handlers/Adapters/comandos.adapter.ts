@@ -2,8 +2,8 @@ import { Message, CommandInteraction, Client } from 'discord.js';
 import { ComandosCommand } from '@xororo/core/commands';
 import { resolve } from '@xororo/core/providers';
 
-import { CommandsManager } from '../CommandsManager';
-import { DiscordCommandHandler } from '../Command';
+import { CommandsManager } from '../../CommandsManager';
+import { DiscordCommandHandler } from '../../Command';
 import { interactionAdapter } from './interaction.adapter';
 
 export class ComandosCommandAdapter
