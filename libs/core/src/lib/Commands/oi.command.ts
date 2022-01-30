@@ -5,7 +5,6 @@ export class OiCommand extends Command {
   readonly displayName = 'oi';
   readonly usage = 'oi';
   readonly description = 'Salve?';
-  readonly interactionOptions = [];
 
   protected exec(interaction: Interaction) {
     return interaction.reply('EAI CARAIO');

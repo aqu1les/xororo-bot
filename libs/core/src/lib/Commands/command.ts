@@ -16,6 +16,9 @@ export abstract class Command {
    */
   abstract description: string;
 
+  /** TODO: definir interface comum */
+  interactionOptions: any[] = [];
+
   /**
    * Execução do comando
    */

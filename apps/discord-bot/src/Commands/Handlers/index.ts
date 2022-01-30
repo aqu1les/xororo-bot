@@ -1,4 +1,3 @@
-import { CommandsListCommand } from './comandos';
 import { CuCommand } from './cu';
 import { CusCommand } from './cus';
 import { EloCommand } from './elo';
@@ -9,7 +8,8 @@ import { PingCommand } from './ping';
 import { PvtCommand } from './pvt';
 
 // ADAPTED COMMANDS
-import { OiCommandAdapter } from './oi';
+import { OiCommandAdapter } from './oi.adapter';
+import { ComandosCommandAdapter } from './comandos.adapter';
 
 // MUSIC PLAY
 import { LeaveCommand } from './leave';
@@ -25,7 +25,7 @@ export const COMMANDS_HANDLERS: {
   new (): DiscordCommandHandler;
 }[] = [
   OiCommandAdapter,
-  CommandsListCommand,
+  ComandosCommandAdapter,
   CuCommand,
   CusCommand,
   EloCommand,
