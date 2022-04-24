@@ -1,7 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "core": "libs/core",
     "discord-bot": "apps/discord-bot",
-    "core": "libs/core"
+    "landing-page": "apps/landing-page"
   }
 }
