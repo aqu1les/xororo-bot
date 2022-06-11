@@ -18,7 +18,7 @@ const App: Component = () => {
       openToast({ message: 'App ta pronto para ser utilizado offline!' });
     },
     onNeedRefresh() {
-      // TODO: perguntar se deve atualizar a página
+      openToast({ message: 'Reinicie a página para atualizar o app' });
     },
     onRegistered(r) {
       r &&

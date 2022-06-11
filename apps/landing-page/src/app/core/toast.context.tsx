@@ -3,6 +3,7 @@
 import { createStore } from 'solid-js/store';
 import { createContext, createSignal, useContext } from 'solid-js';
 import { Transition } from 'solid-headless';
+import { translate } from '@core/translate.directive';
 
 export interface ToastOptions {
   message: string;
@@ -68,7 +69,7 @@ export function ToastProvider(props: any) {
             </svg>
           </div>
 
-          <div class="ml-3 text-sm font-normal">{state.message}</div>
+          <div class="ml-3 text-sm font-normal">{translate(state.message)}</div>
 
           <button
             type="button"

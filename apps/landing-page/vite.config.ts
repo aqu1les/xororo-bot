@@ -6,17 +6,19 @@ import solidPlugin from 'vite-plugin-solid';
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: 'public',
+  define: {
+    __BUILD_HASH__: Date.now()
+  },
   plugins: [
     solidPlugin(),
     VitePWA({
-      registerType: 'autoUpdate',
+      includeAssets: ['i18n'],
+      injectManifest: {
+        globPatterns: ['i18n/**/*.json']
+      },
       strategies: 'injectManifest',
       srcDir: 'src',
       filename: 'sw.ts',
-      devOptions: {
-        enabled: true,
-        type: 'module'
-      },
       manifest: {
         name: 'Xororo BOT',
         short_name: 'Xororo BOT',

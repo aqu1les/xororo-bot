@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import HttpApi from 'i18next-xhr-backend';
+import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 export const i18nConfig = i18next
@@ -19,7 +19,8 @@ export const i18nConfig = i18next
         lookupFromPathIndex: 0
       },
       backend: {
-        loadPath: '/i18n/{{lng}}/{{ns}}.json'
+        loadPath: `/i18n/{{lng}}/{{ns}}.json`,
+        queryStringParams: { v: __BUILD_HASH__ }
       }
     },
     (err) => {

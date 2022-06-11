@@ -15,7 +15,8 @@
     "paths": {
       "@core/*": ["./src/app/core/*"],
       "@config/*": ["./src/config/*"]
-    }
+    },
+    "resolveJsonModule": true
   },
   "include": ["src", "typing.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

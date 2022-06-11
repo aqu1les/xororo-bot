@@ -17,3 +17,5 @@ declare module 'virtual:pwa-register/solid' {
     updateServiceWorker: (reloadPage?: boolean) => Promise<void>;
   };
 }
+
+declare const __BUILD_HASH__: string;

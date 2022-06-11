@@ -17,6 +17,13 @@
         "cwd": "apps/landing-page"
       }
     },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn preview --host",
+        "cwd": "apps/landing-page"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": [
