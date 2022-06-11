@@ -1,17 +1,17 @@
-import './App.scss';
-import { useContext, useEffect } from 'react';
+import './App.module.scss';
 
-import { useRegisterSW } from 'virtual:pwa-register/react';
-import { ToastContext } from './core/toast.context';
+import { useRegisterSW } from 'virtual:pwa-register/solid';
+import { Component, onCleanup } from 'solid-js';
 
-export function App() {
-  const { open: openToast, close: closeToast } = useContext(ToastContext);
+import { useToast } from './core/toast.context';
+import { translate } from '@core/translate.directive';
 
-  useEffect(() => {
-    return () => {
-      closeToast();
-    };
-  }, []);
+const App: Component = () => {
+  const { openToast, closeToast } = useToast();
+
+  onCleanup(() => {
+    closeToast();
+  });
 
   useRegisterSW({
     onOfflineReady() {
@@ -28,5 +28,7 @@ export function App() {
     }
   });
 
-  return <div className="App">Teste</div>;
-}
+  return <div class="App">{translate('Teste')}</div>;
+};
+
+export default App;

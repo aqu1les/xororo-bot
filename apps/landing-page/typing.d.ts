@@ -1,5 +1,5 @@
-declare module 'virtual:pwa-register/react' {
-  import type { Dispatch, SetStateAction } from 'react';
+declare module 'virtual:pwa-register/solid' {
+  import type { Accessor, Setter } from 'solid-js';
 
   export interface RegisterSWOptions {
     immediate?: boolean;
@@ -12,8 +12,8 @@ declare module 'virtual:pwa-register/react' {
   }
 
   export function useRegisterSW(options?: RegisterSWOptions): {
-    needRefresh: [boolean, Dispatch<SetStateAction<boolean>>];
-    offlineReady: [boolean, Dispatch<SetStateAction<boolean>>];
+    needRefresh: [Accessor<boolean>, Setter<boolean>];
+    offlineReady: [Accessor<boolean>, Setter<boolean>];
     updateServiceWorker: (reloadPage?: boolean) => Promise<void>;
   };
 }

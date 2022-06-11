@@ -1,12 +1,13 @@
+import * as path from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import solidPlugin from 'vite-plugin-solid';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: 'public',
   plugins: [
-    react(),
+    solidPlugin(),
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
@@ -43,5 +44,15 @@ export default defineConfig({
         ]
       }
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@core': path.resolve(__dirname, './src/app/core'),
+      '@config': path.resolve(__dirname, './src/config')
+    }
+  },
+  build: {
+    target: 'esnext',
+    polyfillDynamicImport: false
+  }
 });

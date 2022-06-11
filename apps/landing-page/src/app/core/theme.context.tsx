@@ -1,4 +1,7 @@
-import React, { createContext, useState, useEffect, useMemo } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { createContext, onMount, useContext } from 'solid-js';
+import { createStore } from 'solid-js/store';
 
 export enum Themes {
   Dark = 'dark',
@@ -6,13 +9,10 @@ export enum Themes {
 }
 
 export const ALLOWED_THEMES: string[] = [Themes.Dark, Themes.Light];
-export const ThemeContext = createContext({
-  theme: Themes.Light,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setTheme: (theme: Themes): void => {
-    return void 0;
-  }
-});
+const ThemeContext = createContext([
+  { theme: Themes.Light },
+  { setTheme(theme: Themes) {} }
+] as [{ theme: Themes }, { setTheme(theme: Themes): void }]);
 
 export const setupThemeContext = (
   globalObj: {
@@ -41,33 +41,42 @@ export const setupThemeContext = (
     return Themes.Light;
   };
 
+  function rawSetTheme(rawTheme: Themes) {
+    rootElement.classList.remove(...ALLOWED_THEMES);
+    rootElement.classList.add(rawTheme);
+
+    globalObj.localStorage.setItem('color-theme', rawTheme);
+  }
+
   return {
     ThemeContext,
-    ThemeProvider: ({
-      initialTheme,
-      children
-    }: React.PropsWithChildren<{ initialTheme?: Themes }>) => {
-      const [theme, setTheme] = useState(initialTheme ?? getInitialTheme());
-      const value = useMemo(() => ({ theme, setTheme }), [theme]);
+    ThemeProvider: (props: any) => {
+      const [state, setState] = createStore({
+        theme: getInitialTheme()
+      });
+      const store = [
+        state,
+        {
+          setTheme(theme: Themes) {
+            setState('theme', theme);
+            rawSetTheme(theme);
+          }
+        }
+      ] as [{ theme: Themes }, { setTheme(theme: Themes): void }];
 
-      const rawSetTheme = (rawTheme: Themes) => {
-        rootElement.classList.remove(...ALLOWED_THEMES);
-        rootElement.classList.add(rawTheme);
-
-        globalObj.localStorage.setItem('color-theme', rawTheme);
-      };
-
-      if (initialTheme) {
-        rawSetTheme(initialTheme);
-      }
-
-      useEffect(() => {
-        rawSetTheme(theme);
-      }, [theme]);
+      onMount(() => {
+        rawSetTheme(state.theme);
+      });
 
       return (
-        <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+        <ThemeContext.Provider value={store}>
+          {props.children}
+        </ThemeContext.Provider>
       );
     }
   };
 };
+
+export function useTheme() {
+  return useContext(ThemeContext);
+}

@@ -1,21 +1,25 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import './index.scss';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+/* @refresh reload */
+import { render } from 'solid-js/web';
+import i18next from 'i18next';
 
-import { App } from './app/App';
+import './index.scss';
+
 import { ToastProvider } from './app/core/toast.context';
 import { setupThemeContext } from './app/core/theme.context';
+import App from './app/App';
+import { I18nProvider } from './app/core/i18n.context';
 
-const rootElement = document.getElementById('root')!;
 const { ThemeProvider } = setupThemeContext(window, document.documentElement);
 
-ReactDOM.createRoot(rootElement).render(
-  <React.StrictMode>
+render(
+  () => (
     <ThemeProvider>
-      <ToastProvider>
-        <App />
-      </ToastProvider>
+      <I18nProvider i18n={i18next}>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </I18nProvider>
     </ThemeProvider>
-  </React.StrictMode>
+  ),
+  document.getElementById('root') as HTMLElement
 );
