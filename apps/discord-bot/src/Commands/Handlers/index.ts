@@ -1,13 +1,16 @@
-import { CommandsListCommand } from './comandos';
-import { CuCommand } from './cu';
-import { CusCommand } from './cus';
-import { EloCommand } from './elo';
-import { OiCommand } from './oi';
-import { XamaCommand } from './xama';
+// ADAPTED COMMANDS
+import { OiCommandAdapter } from './Adapters/oi.adapter';
+import { ComandosCommandAdapter } from './Adapters/comandos.adapter';
+import { CuCommandAdapter } from './Adapters/cu.adapter';
+import { CusCommandAdapter } from './Adapters/cus.adapter';
+import { EloCommandAdapter } from './Adapters/elo.adapter';
+import { LanseCommandAdapter } from './Adapters/lanse.adapter';
+import { PingCommandAdapter } from './Adapters/ping.adapter';
+import { PvtCommandAdapter } from './Adapters/pvt.adapter';
+import { XamaCommandAdapter } from './Adapters/xama.adapter';
+
+// UNIQUE COMMANDS
 import { JoinCommand } from './join';
-import { LanseCommand } from './lanse';
-import { PingCommand } from './ping';
-import { PvtCommand } from './pvt';
 
 // MUSIC PLAY
 import { LeaveCommand } from './leave';
@@ -17,18 +20,22 @@ import { QueueCommand } from './queue';
 import { ResumeCommand } from './resume';
 import { SkipCommand } from './skip';
 import { StopCommand } from './stop';
+import { DiscordCommandHandler } from '../Command';
 
-export const COMMANDS_HANDLERS = [
-  OiCommand,
-  CommandsListCommand,
-  CuCommand,
-  CusCommand,
-  EloCommand,
+export const COMMANDS_HANDLERS: {
+  new (): DiscordCommandHandler;
+}[] = [
+  OiCommandAdapter,
+  ComandosCommandAdapter,
+  CuCommandAdapter,
+  CusCommandAdapter,
+  EloCommandAdapter,
+  LanseCommandAdapter,
+  PingCommandAdapter,
+  PvtCommandAdapter,
+  XamaCommandAdapter,
+  // UNIQUE ↓
   JoinCommand,
-  LanseCommand,
-  PingCommand,
-  PvtCommand,
-  XamaCommand,
   // MUSIC PLAY
   LeaveCommand,
   PauseCommand,

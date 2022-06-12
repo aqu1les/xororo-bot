@@ -1,6 +1,6 @@
 import { Message, CommandInteraction, Client } from 'discord.js';
 
-export interface AppCommand {
+export interface DiscordCommandHandler {
   displayName: string;
   usage: string;
   description: string;

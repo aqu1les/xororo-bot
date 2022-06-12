@@ -20,11 +20,11 @@ import {
   TextBasedChannelFields,
   GuildMember
 } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
 let author: User | null = null;
 
-export class PlayCommand implements AppCommand {
+export class PlayCommand implements DiscordCommandHandler {
   readonly displayName = 'play';
   readonly usage = 'play';
   readonly description = 'Toca musica né irmão';

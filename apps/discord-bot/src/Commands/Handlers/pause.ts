@@ -1,8 +1,8 @@
 // import { getVoiceConnection } from '@discordjs/voice';
 // import { Message, CommandInteraction, Client } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class PauseCommand implements AppCommand {
+export class PauseCommand implements DiscordCommandHandler {
   readonly displayName = 'pause';
   readonly usage = 'pause';
   readonly description = 'Pausa a música que está tocando';

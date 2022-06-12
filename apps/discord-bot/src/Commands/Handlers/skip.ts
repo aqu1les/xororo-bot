@@ -1,6 +1,6 @@
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class SkipCommand implements AppCommand {
+export class SkipCommand implements DiscordCommandHandler {
   readonly displayName = 'skip';
   readonly usage = 'skip';
   readonly description = 'Pula a musica que tá tocando';

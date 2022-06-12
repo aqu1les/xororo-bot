@@ -5,9 +5,9 @@ import {
 } from '../../Helpers/voice-connection';
 
 import { Message, CommandInteraction, Client, GuildMember } from 'discord.js';
-import { AppCommand } from '../Command';
+import { DiscordCommandHandler } from '../Command';
 
-export class JoinCommand implements AppCommand {
+export class JoinCommand implements DiscordCommandHandler {
   readonly displayName = 'join';
   readonly usage = 'join';
   readonly description = 'Entra no seu canal de voz';

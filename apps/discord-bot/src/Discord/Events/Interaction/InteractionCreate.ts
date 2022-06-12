@@ -1,11 +1,11 @@
 import { Client, CommandInteraction } from 'discord.js';
-import { CommandsManager } from '../../../Commands/CommandsManager';
+import { DiscordCommandsManager } from '../../../Commands/DiscordCommandsManager';
 import { resolve } from '@xororo/core/providers';
 import { EventHandler } from '../EventHandler';
 
 export class InteractionCreate implements EventHandler {
-  private get commandsManager(): CommandsManager {
-    return resolve(CommandsManager);
+  private get commandsManager(): DiscordCommandsManager {
+    return resolve(DiscordCommandsManager);
   }
 
   async exec(client: Client, interaction: CommandInteraction) {

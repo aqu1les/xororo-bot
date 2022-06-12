@@ -7,7 +7,6 @@
     "removeComments": true,
     "strict": true,
     "esModuleInterop": true,
-    "allowJs": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
