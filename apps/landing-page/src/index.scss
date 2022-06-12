@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$green: #4db95a;
+$green-light: #81ec89;
+$green-dark: #03882d;
+
+$night: #18151a;
+$night-light: #3e3b40;
+$night-dark: #000000;
+
+:root {
+  --primary: #{$green};
+  --primary-light: #{$green-light};
+  --primary-lighten: #81ec8945;
+  --primary-dark: #{$green-dark};
+
+  --secondary: #{$night};
+  --secondary-light: #{$night-light};
+  --secondary-dark: #{$night-dark};
+
+  --text-primary-base: #000000;
+  --text-secondary-base: #ffffff;
+
+  --background-base: #fafafa;
+}
+
+html.dark {
+  --text-primary-base: #ffffff;
+  --text-secondary-base: #000000;
+
+  --background-base: #2c2c2c;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--background-base);
+  color: var(--text-primary-base);
+
+  @apply transition-colors;
+}
+
+button.accent {
+  outline: none;
+  @apply focus:ring-2 ring-primary p-1.5 text-gray-400 transition-all rounded-lg inline-flex;
+  @apply hover:text-white hover:bg-secondary-light;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

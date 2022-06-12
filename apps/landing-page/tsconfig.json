@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "paths": {
+      "@core/*": ["./src/app/core/*"],
+      "@config/*": ["./src/config/*"]
+    },
+    "resolveJsonModule": true
+  },
+  "include": ["src", "typing.d.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

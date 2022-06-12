@@ -1,0 +1,48 @@
+{
+  "root": "apps/landing-page",
+  "projectType": "application",
+  "sourceRoot": "apps/landing-page/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn build",
+        "cwd": "apps/landing-page"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn dev",
+        "cwd": "apps/landing-page"
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn preview --host",
+        "cwd": "apps/landing-page"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/landing-page/src/**/*.tsx",
+          "apps/landing-page/src/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx vitest --run",
+        "cwd": "apps/landing-page"
+      }
+    }
+  },
+  "tags": []
+}
